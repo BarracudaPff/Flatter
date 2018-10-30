@@ -1,9 +1,12 @@
 package com.barracudapff.hoobes.flatter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -57,27 +60,25 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     /**
      * Switching main screens (Fragments)
+     * Fragments have saved instances.
      *
-     * @param fragment Switch to existing or create new fragment
+     * @param fragment Switch to existing or create new fragment.
      */
     public void switchToFragment(Fragment fragment) {
-        if (getSupportFragmentManager().findFragmentByTag(fragment.getClass().getSimpleName()) != null) {
-            getSupportFragmentManager().beginTransaction()
-                    .hide(active)
-                    .show(fragment)
-                    .commit();
-        } else {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.screen_frame, fragment, fragment.getClass().getSimpleName())
-                    .commit();
-        }
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.screen_frame, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
 
-        active = fragment;
+    public static void basicStart(Context context, Class activity) {
+        Intent starter = new Intent(context, activity);
+        context.startActivity(starter);
     }
 
     /**
      * Listen NavBar clicks
+     *
      * @param item
      * @return
      */
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
             case R.id.navigation_chat_list:
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                    System.out.println("chatListFragment");
                     switchToFragment(chatListFragment);
                 } else {
                     switchToFragment(SignInFragment.newInstance());
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
             case R.id.navigation_person:
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                    System.out.println("personFragment");
                     switchToFragment(personFragment);
                 } else {
                     switchToFragment(SignInFragment.newInstance());

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#fe0154</color>
+    <color name="colorPrimaryDark">#cb0143</color>
+    <color name="colorAccent">#ffffff</color>
+
+    <color name="login">#0072c6</color>
+
+    <color name="lightGray">#eee</color>
+    <color name="darkGray">#aaa</color>
+
+    <color name="selector_item_color">#000</color>
+    <color name="white">#fff</color>
+    <color name="fragment_background">#eee</color>
+
+    <color name="free">#2196F3</color>
+    <color name="closed">#f44336</color>
+
+    <color name="optionsColor">#fff</color>
+
+    <color name="settings_background">#eee</color>
+    <color name="middleGray">#ddd</color>
 </resources>

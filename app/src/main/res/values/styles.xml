@@ -8,6 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.SingIn" parent="@style/AppTheme.NoActionBar">
+        <item name="colorAccent">#111</item>
+    </style>
+
     <style name="button_start_dialog">
         <item name="colorSecondary">#432</item>
         <item name="android:textStyle">bold</item>

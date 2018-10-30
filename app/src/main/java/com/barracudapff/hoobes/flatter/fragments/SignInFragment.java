@@ -6,13 +6,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.barracudapff.hoobes.flatter.MainActivity;
 import com.barracudapff.hoobes.flatter.R;
+import com.barracudapff.hoobes.flatter.activities.LogInActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SignInFragment extends Fragment {
+public class SignInFragment extends Fragment implements View.OnClickListener {
 
 
     public SignInFragment() {
@@ -20,9 +24,9 @@ public class SignInFragment extends Fragment {
     }
 
     public static SignInFragment newInstance() {
-        
+
         Bundle args = new Bundle();
-        
+
         SignInFragment fragment = new SignInFragment();
         fragment.setArguments(args);
         return fragment;
@@ -32,7 +36,18 @@ public class SignInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in, container, false);
+        View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
+
+        TextView btn_sign_in = view.findViewById(R.id.sign_in_button);
+        btn_sign_in.setOnClickListener(this);
+
+        return view;
     }
 
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.sign_in_button) {
+            MainActivity.basicStart(getContext(), LogInActivity.class);
+        }
+    }
 }

@@ -4,25 +4,25 @@
 
     <item
         android:id="@+id/navigation_social"
-        android:icon="@drawable/ic_social"
+        android:icon="@drawable/ic_menu_social"
         android:title="@string/title_social" />
     <item
         android:id="@+id/navigation_chat_list"
-        android:icon="@drawable/ic_chat"
+        android:icon="@drawable/ic_menu_chat"
         android:title="@string/title_chat" />
     <item
         android:id="@+id/navigation_map"
-        android:icon="@drawable/ic_map"
+        android:icon="@drawable/ic_menu_map"
         android:title="@string/title_map" />
 
     <item
         android:id="@+id/navigation_party_list"
-        android:icon="@drawable/ic_party"
+        android:icon="@drawable/ic_menu_party"
         android:title="@string/title_party" />
 
     <item
         android:id="@+id/navigation_person"
-        android:icon="@drawable/ic_person"
+        android:icon="@drawable/ic_menu_person"
         android:title="@string/title_person" />
 
 </menu>

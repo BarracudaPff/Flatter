@@ -7,7 +7,14 @@
     <string name="title_map">Карта</string>
     <string name="title_party">Вечеринки</string>
     <string name="title_person">Аккаунт</string>
-    <string name="log_hint">Вы не вошли в систему. Для просмотра профиля войдите в аккаунт или создайте новый.</string>
     <string name="log_in">Войти в систему</string>
-    <string name="title_activity_log_in">Зайти в пользователя</string>
+
+    <string name="title_activity_log_in">Войти</string>
+    <string name="forget_pas">Забыли пароль?</string>
+
+    <string name="log_hint">Вы не вошли в систему. Для просмотра профиля войдите в аккаунт или создайте новый.</string>
+    <string name="title_activity_sing_up">Зарегестрироваться</string>
+    <string name="not_log_in">Еще не зарегестрированы?</string>
+    <string name="sing_up">Зарегистрироваться</string>
+    <string name="mail">Почта</string>
 </resources>
