@@ -17,4 +17,5 @@
     <string name="not_log_in">Еще не зарегестрированы?</string>
     <string name="sing_up">Зарегистрироваться</string>
     <string name="mail">Почта</string>
+    <string name="password">Пароль</string>
 </resources>
