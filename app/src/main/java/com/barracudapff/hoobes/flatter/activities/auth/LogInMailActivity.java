@@ -1,4 +1,4 @@
-package com.barracudapff.hoobes.flatter.activities;
+package com.barracudapff.hoobes.flatter.activities.auth;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -15,9 +16,16 @@ import android.widget.TextView;
 import com.barracudapff.hoobes.flatter.MainActivity;
 import com.barracudapff.hoobes.flatter.R;
 
-public class LogInActivity extends AppCompatActivity {
+public class LogInMailActivity extends AppCompatActivity {
+    public static int CODE_SIGN_UP = 102;
+
     FloatingActionButton fab;
     Animation animation, animFadeIn, animFadeInWithListener, animationCard;
+    ConstraintLayout layout;
+
+    ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener;
+
+    boolean isCreated = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +33,9 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
         fab = findViewById(R.id.fab_log_in);
-        TextView textSingUp = findViewById(R.id.txt_sing_up);
-        TextView textSingUpLabel = findViewById(R.id.log_in_label);
         CardView cardView = findViewById(R.id.card_log_container);
         ImageView imageView = findViewById(R.id.iv_log_in_logo);
 
-        textSingUp.setOnClickListener(v -> MainActivity.basicStart(this, SingUpActivity.class));
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
         animFadeInWithListener = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
         animFadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
@@ -43,8 +48,8 @@ public class LogInActivity extends AppCompatActivity {
                 cardView.setVisibility(View.VISIBLE);
                 fab.setVisibility(View.VISIBLE);
 
-                fab.startAnimation(LogInActivity.this.animation);
-                cardView.startAnimation(LogInActivity.this.animationCard);
+                fab.startAnimation(LogInMailActivity.this.animation);
+                cardView.startAnimation(LogInMailActivity.this.animationCard);
             }
 
             @Override
@@ -67,9 +72,15 @@ public class LogInActivity extends AppCompatActivity {
 
         //new Handler().post(() -> fab.startAnimation(animation));
         //fab.startAnimation(animation);
-        final ConstraintLayout layout = findViewById(R.id.id);
+        layout = findViewById(R.id.id);
         imageView.setAnimation(animFadeIn);
-        layout.getViewTreeObserver().addOnGlobalLayoutListener(() -> textSingUp.startAnimation(animFadeInWithListener));
+        onGlobalLayoutListener = () -> {
+            if (!isCreated) {
+                imageView.startAnimation(animFadeInWithListener);
+                isCreated = true;
+            }
+        };
+        layout.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
     }
 
     @Override
@@ -80,5 +91,23 @@ public class LogInActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        layout.getViewTreeObserver().removeOnGlobalLayoutListener(onGlobalLayoutListener);
+        fab.setOnClickListener(null);
+        animFadeInWithListener.setAnimationListener(null);
+        layout = null;
+        fab = null;
+        onGlobalLayoutListener = null;
     }
 }

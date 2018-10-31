@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activities.SingUpActivity"
+    tools:context=".activities.auth.SingUpMainActivity"
     tools:showIn="@layout/activity_sing_up">
 
 </android.support.constraint.ConstraintLayout>

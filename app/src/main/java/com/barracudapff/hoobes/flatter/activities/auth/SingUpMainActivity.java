@@ -1,4 +1,4 @@
-package com.barracudapff.hoobes.flatter.activities;
+package com.barracudapff.hoobes.flatter.activities.auth;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.barracudapff.hoobes.flatter.R;
 
-public class SingUpActivity extends AppCompatActivity {
+public class SingUpMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

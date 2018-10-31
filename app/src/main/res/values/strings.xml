@@ -16,6 +16,8 @@
     <string name="title_activity_sing_up">Зарегестрироваться</string>
     <string name="not_log_in">Еще не зарегестрированы?</string>
     <string name="sing_up">Зарегистрироваться</string>
+    <string name="sing_in">Войти</string>
     <string name="mail">Почта</string>
     <string name="password">Пароль</string>
+    <string name="title_activity_sign_in_list">Title</string>
 </resources>

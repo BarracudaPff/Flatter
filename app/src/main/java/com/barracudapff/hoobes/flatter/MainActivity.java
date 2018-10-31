@@ -1,5 +1,6 @@
 package com.barracudapff.hoobes.flatter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -71,9 +72,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 .commit();
     }
 
-    public static void basicStart(Context context, Class activity) {
+    /**
+     * Starts new activity with code {@param code}
+     * @param context Parent Activity
+     * @param activity New Activity
+     * @param code request code
+     */
+    public static void basicStart(Activity context, Class activity, int code) {
         Intent starter = new Intent(context, activity);
-        context.startActivity(starter);
+        context.startActivityForResult(starter,code);
     }
 
     /**

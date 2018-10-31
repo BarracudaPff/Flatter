@@ -1,23 +1,21 @@
 package com.barracudapff.hoobes.flatter.fragments;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.barracudapff.hoobes.flatter.MainActivity;
 import com.barracudapff.hoobes.flatter.R;
-import com.barracudapff.hoobes.flatter.activities.LogInActivity;
+import com.barracudapff.hoobes.flatter.activities.auth.SignInMainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SignInFragment extends Fragment implements View.OnClickListener {
-
+    public static int CODE_SIGN_IN = 101;
 
     public SignInFragment() {
         // Required empty public constructor
@@ -47,7 +45,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.sign_in_button) {
-            MainActivity.basicStart(getContext(), LogInActivity.class);
+            MainActivity.basicStart(getActivity(), SignInMainActivity.class, 101);
         }
     }
 }

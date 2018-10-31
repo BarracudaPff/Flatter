@@ -21,21 +21,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LogInActivity"
+            android:name=".activities.auth.SignInMainActivity"
+            android:label="@string/title_activity_sign_in_list"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.SingIn">
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.barracudapff.hoobes.flatter.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.SingUpActivity"
+            android:name=".activities.auth.SingUpMainActivity"
             android:label="@string/title_activity_sing_up"
-            android:parentActivityName=".activities.LogInActivity"
+            android:parentActivityName=".activities.auth.SignInMainActivity"
             android:theme="@style/AppTheme.SingIn">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.barracudapff.hoobes.flatter.activities.LogInActivity" />
+                android:value="com.barracudapff.hoobes.flatter.activities.auth.SignInMainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.auth.LogInMailActivity"
+            android:parentActivityName=".activities.auth.SignInMainActivity"
+            android:theme="@style/AppTheme.SingIn">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.barracudapff.hoobes.flatter.activities.auth.SignInMainActivity" />
         </activity>
     </application>
 
