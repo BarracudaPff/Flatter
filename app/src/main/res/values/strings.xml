@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Flatter</string>
+    <string name="flatter_tagline">TODO: Слоган flatter\'a</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_social">Люди рядом</string>
@@ -15,9 +16,22 @@
     <string name="log_hint">Вы не вошли в систему. Для просмотра профиля войдите в аккаунт или создайте новый.</string>
     <string name="title_activity_sing_up">Зарегестрироваться</string>
     <string name="not_log_in">Еще не зарегестрированы?</string>
-    <string name="sing_up">Зарегистрироваться</string>
-    <string name="sing_in">Войти</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="sign_in">Войти</string>
     <string name="mail">Почта</string>
     <string name="password">Пароль</string>
     <string name="title_activity_sign_in_list">Title</string>
+
+    <string name="google_sign_in">Войти через Google</string>
+    <string name="instagram_sign_in">Войти через Instagram</string>
+    <string name="vk_sign_in">Войти через Вконтакте</string>
+    <string name="mail_sign_in">Войти через Почту</string>
+
+    <string name="google_sign_up">Зарегестрироваться через Google</string>
+    <string name="instagram_sign_up">Зарегестрироваться через Instagram</string>
+    <string name="vk_sign_up">Зарегестрироваться через Вконтакте</string>
+    <string name="mail_sign_up">Зарегестрироваться через Почту</string>
+    <string name="title_activity_sign_up_mail">SignUpMailActivity</string>
+    <string name="first_name">Имя</string>
+    <string name="second_name">Фамилия</string>
 </resources>

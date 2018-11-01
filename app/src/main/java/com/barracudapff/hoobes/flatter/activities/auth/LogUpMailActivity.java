@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
@@ -14,7 +16,7 @@ import android.widget.ImageView;
 
 import com.barracudapff.hoobes.flatter.R;
 
-public class LogInMailActivity extends AppCompatActivity {
+public class LogUpMailActivity extends AppCompatActivity {
     public static int CODE_SIGN_UP = 102;
 
     FloatingActionButton fab;
@@ -28,7 +30,7 @@ public class LogInMailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in_mail);
+        setContentView(R.layout.activity_log_up_mail);
 
         fab = findViewById(R.id.fab_log_in);
         CardView cardView = findViewById(R.id.card_log_container);
@@ -46,8 +48,8 @@ public class LogInMailActivity extends AppCompatActivity {
                 cardView.setVisibility(View.VISIBLE);
                 fab.setVisibility(View.VISIBLE);
 
-                fab.startAnimation(LogInMailActivity.this.animation);
-                cardView.startAnimation(LogInMailActivity.this.animationCard);
+                fab.startAnimation(LogUpMailActivity.this.animation);
+                cardView.startAnimation(LogUpMailActivity.this.animationCard);
             }
 
             @Override
@@ -59,9 +61,6 @@ public class LogInMailActivity extends AppCompatActivity {
 
             }
         });
-
-
-        //textSingUpLabel.startAnimation(animFadeInWithListener);
 
         fab.setOnClickListener(view -> {
             fab.startAnimation(animation);
@@ -92,4 +91,5 @@ public class LogInMailActivity extends AppCompatActivity {
         fab = null;
         onGlobalLayoutListener = null;
     }
+
 }

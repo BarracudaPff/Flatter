@@ -30,7 +30,7 @@
                 android:value="com.barracudapff.hoobes.flatter.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.auth.SingUpMainActivity"
+            android:name=".activities.auth.SignUpMainActivity"
             android:label="@string/title_activity_sing_up"
             android:parentActivityName=".activities.auth.SignInMainActivity"
             android:theme="@style/AppTheme.SingIn">
@@ -45,6 +45,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.barracudapff.hoobes.flatter.activities.auth.SignInMainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.auth.LogUpMailActivity"
+            android:label="@string/title_activity_sign_up_mail"
+            android:parentActivityName=".activities.auth.SignUpMainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.barracudapff.hoobes.flatter.activities.auth.SignUpMainActivity" />
         </activity>
     </application>
 
