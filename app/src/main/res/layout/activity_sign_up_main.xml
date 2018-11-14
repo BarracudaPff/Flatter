@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".activities.auth.SignUpMainActivity">
+    tools:context=".activities.auth.up.SignUpMainActivity">
 
     <!--TODO: lower stateListAnimator-->
     <android.support.constraint.ConstraintLayout
@@ -60,7 +60,7 @@
                 android:drawableStart="@drawable/ic_google"
                 android:drawablePadding="16dp"
                 android:gravity="center_vertical"
-                android:text="@string/google_sign_in" />
+                android:text="@string/google_sign_up" />
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -86,7 +86,7 @@
                 android:drawableStart="@drawable/ic_instagram"
                 android:drawablePadding="16dp"
                 android:gravity="center_vertical"
-                android:text="@string/instagram_sign_in" />
+                android:text="@string/instagram_sign_up" />
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -112,7 +112,7 @@
                 android:drawableStart="@drawable/ic_vk"
                 android:drawablePadding="16dp"
                 android:gravity="center_vertical"
-                android:text="@string/vk_sign_in" />
+                android:text="@string/vk_sign_up" />
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -138,7 +138,7 @@
                 android:drawableStart="@drawable/ic_mail"
                 android:drawablePadding="16dp"
                 android:gravity="center_vertical"
-                android:text="@string/mail_sign_in" />
+                android:text="@string/mail_sign_up" />
         </android.support.v7.widget.CardView>
 
         <TextView

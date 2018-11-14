@@ -1,4 +1,4 @@
-package com.barracudapff.hoobes.flatter.activities.auth;
+package com.barracudapff.hoobes.flatter.activities.auth.in;
 
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.barracudapff.hoobes.flatter.MainActivity;
 import com.barracudapff.hoobes.flatter.R;
+import com.barracudapff.hoobes.flatter.activities.auth.up.SignUpMainActivity;
 
 public class SignInMainActivity extends AppCompatActivity {
     ObjectAnimator animatorUp, animatorDown;
@@ -20,15 +21,15 @@ public class SignInMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in_main);
 
         setUpCard(findViewById(R.id.cardViewGoogle), v ->
-                Toast.makeText(this, "TODO: not avaibale now", Toast.LENGTH_SHORT).show());
+                Toast.makeText(this, "TODO: not available now", Toast.LENGTH_SHORT).show());
         setUpCard(findViewById(R.id.cardViewInstagram), v ->
-                Toast.makeText(this, "TODO: not avaibale now", Toast.LENGTH_SHORT).show());
+                Toast.makeText(this, "TODO: not available now", Toast.LENGTH_SHORT).show());
         setUpCard(findViewById(R.id.cardViewVk), v ->
-                Toast.makeText(this, "TODO: not avaibale now", Toast.LENGTH_SHORT).show());
+                Toast.makeText(this, "TODO: not available now", Toast.LENGTH_SHORT).show());
         setUpCard(findViewById(R.id.cardViewMail), v ->
                 MainActivity.basicStart(this, LogInMailActivity.class, 102));
         setUpCard(findViewById(R.id.sign_up_button), v ->
-                MainActivity.basicStart(this, LogInMailActivity.class, 103));
+                MainActivity.basicStart(this, SignUpMainActivity.class, 103));
     }
 
     public void animUp(CardView view) {

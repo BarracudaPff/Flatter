@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.barracudapff.hoobes.flatter.MainActivity;
 import com.barracudapff.hoobes.flatter.R;
-import com.barracudapff.hoobes.flatter.activities.auth.SignInMainActivity;
+import com.barracudapff.hoobes.flatter.activities.auth.in.SignInMainActivity;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,4 +1,4 @@
-package com.barracudapff.hoobes.flatter.activities.auth;
+package com.barracudapff.hoobes.flatter.activities.auth.up;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -14,25 +14,22 @@ import android.widget.ImageView;
 
 import com.barracudapff.hoobes.flatter.R;
 
-public class LogInMailActivity extends AppCompatActivity {
+public class LogUpMailActivity extends AppCompatActivity {
     public static int CODE_SIGN_UP = 102;
 
     FloatingActionButton fab;
     Animation animation, animFadeIn, animFadeInWithListener, animationCard;
-    ConstraintLayout layout;
-
-    ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener;
-
-    boolean isCreated = false;
+    ImageView imageView;
+    CardView cardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in_mail);
+        setContentView(R.layout.activity_log_up_mail);
 
         fab = findViewById(R.id.fab_log_in);
-        CardView cardView = findViewById(R.id.card_log_container);
-        ImageView imageView = findViewById(R.id.iv_log_in_logo);
+        cardView = findViewById(R.id.card_log_container);
+        imageView = findViewById(R.id.iv_log_in_logo);
 
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
         animFadeInWithListener = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
@@ -46,8 +43,8 @@ public class LogInMailActivity extends AppCompatActivity {
                 cardView.setVisibility(View.VISIBLE);
                 fab.setVisibility(View.VISIBLE);
 
-                fab.startAnimation(LogInMailActivity.this.animation);
-                cardView.startAnimation(LogInMailActivity.this.animationCard);
+                fab.startAnimation(LogUpMailActivity.this.animation);
+                cardView.startAnimation(LogUpMailActivity.this.animationCard);
             }
 
             @Override
@@ -60,36 +57,28 @@ public class LogInMailActivity extends AppCompatActivity {
             }
         });
 
-
-        //textSingUpLabel.startAnimation(animFadeInWithListener);
-
         fab.setOnClickListener(view -> {
             fab.startAnimation(animation);
             cardView.startAnimation(animationCard);
         });
 
-        //new Handler().post(() -> fab.startAnimation(animation));
-        //fab.startAnimation(animation);
-        layout = findViewById(R.id.id);
         imageView.setAnimation(animFadeIn);
-        onGlobalLayoutListener = () -> {
-            if (!isCreated) {
-                imageView.startAnimation(animFadeInWithListener);
-                isCreated = true;
-            }
-        };
-        layout.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        if (hasFocus) {
+            imageView.startAnimation(animFadeInWithListener);
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        layout.getViewTreeObserver().removeOnGlobalLayoutListener(onGlobalLayoutListener);
         fab.setOnClickListener(null);
         animFadeInWithListener.setAnimationListener(null);
-        layout = null;
         fab = null;
-        onGlobalLayoutListener = null;
     }
+
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".activities.auth.LogInMailActivity">
+    tools:context=".activities.auth.up.LogUpMailActivity">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/id"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
             app:contentPadding="16dp"
@@ -46,6 +46,7 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:focusableInTouchMode="true"
                 tools:ignore="Autofill">
 
                 <TextView
@@ -145,19 +146,22 @@
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>
 
+        <!--TODO: lower stateListAnimator-->
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_log_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="center"
-            android:visibility="visible"
+            android:stateListAnimator="@animator/card_elevator"
+            android:visibility="invisible"
             app:backgroundTint="@color/colorPrimary"
             app:elevation="5dp"
             app:layout_constraintBottom_toBottomOf="@+id/space"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_fab_sing_in_button" />
+            app:srcCompat="@drawable/ic_fab_sing_in_button"
+            tools:ignore="UnusedAttribute" />
 
         <Space
             android:id="@+id/space"

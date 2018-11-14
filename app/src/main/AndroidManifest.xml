@@ -21,39 +21,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.auth.SignInMainActivity"
-            android:label="@string/title_activity_sign_in_list"
+            android:name=".activities.auth.in.SignInMainActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.SingIn">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.barracudapff.hoobes.flatter.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.auth.SignUpMainActivity"
-            android:label="@string/title_activity_sing_up"
-            android:parentActivityName=".activities.auth.SignInMainActivity"
+            android:name=".activities.auth.up.SignUpMainActivity"
+            android:parentActivityName=".activities.auth.in.SignInMainActivity"
             android:theme="@style/AppTheme.SingIn">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.barracudapff.hoobes.flatter.activities.auth.SignInMainActivity" />
+                android:value="com.barracudapff.hoobes.flatter.activities.auth.in.SignInMainActivity" />
         </activity>
         <activity
-            android:name=".activities.auth.LogInMailActivity"
-            android:parentActivityName=".activities.auth.SignInMainActivity"
+            android:name=".activities.auth.in.LogInMailActivity"
+            android:parentActivityName=".activities.auth.in.SignInMainActivity"
             android:theme="@style/AppTheme.SingIn">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.barracudapff.hoobes.flatter.activities.auth.SignInMainActivity" />
+                android:value="com.barracudapff.hoobes.flatter.activities.auth.in.SignInMainActivity" />
         </activity>
         <activity
-            android:name=".activities.auth.LogUpMailActivity"
-            android:label="@string/title_activity_sign_up_mail"
-            android:parentActivityName=".activities.auth.SignUpMainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".activities.auth.up.LogUpMailActivity"
+            android:parentActivityName=".activities.auth.up.SignUpMainActivity"
+            android:theme="@style/AppTheme.SingIn">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.barracudapff.hoobes.flatter.activities.auth.SignUpMainActivity" />
+                android:value="com.barracudapff.hoobes.flatter.activities.auth.up.SignUpMainActivity" />
         </activity>
     </application>
 
