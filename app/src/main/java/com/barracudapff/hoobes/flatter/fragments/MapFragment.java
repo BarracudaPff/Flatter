@@ -23,9 +23,9 @@ public class MapFragment extends DebugFragment {
     }
 
     public static MapFragment newInstance() {
-        
+
         Bundle args = new Bundle();
-        
+
         MapFragment fragment = new MapFragment();
         fragment.setArguments(args);
         return fragment;
@@ -43,13 +43,36 @@ public class MapFragment extends DebugFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).hide();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
     }
 
+    private void hideSystemUI() {
+        getActivity().getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        // remove the following flag for version < API 19
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE
+        );
+    }
 
     @Override
     public void onPause() {
         super.onPause();
-        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).show();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        //mapView.onLowMemory();
+    }
+
+
 }

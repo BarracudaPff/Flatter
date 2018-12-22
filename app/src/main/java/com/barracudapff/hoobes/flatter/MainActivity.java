@@ -9,6 +9,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.barracudapff.hoobes.flatter.fragments.ChatListFragment;
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private PartyListFragment partyListFragment;
     private PersonFragment personFragment;
     private SocialFragment socialFragment;
-    private Fragment active;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setUpNavigationBar();
         switchToFragment(socialFragment);
 
+        Toolbar mActionBarToolbar = findViewById(R.id.toolbar);
+        mActionBarToolbar.setTitle(R.string.app_name);
+        setSupportActionBar(mActionBarToolbar);
     }
 
     /**
@@ -68,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public void switchToFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.screen_frame, fragment)
-                .addToBackStack(null)
                 .commit();
     }
 

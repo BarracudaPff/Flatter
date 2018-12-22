@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.barracudapff.hoobes.flatter.MainActivity;
 import com.barracudapff.hoobes.flatter.R;
+import com.barracudapff.hoobes.flatter.activities.auth.AuthActivity;
 import com.barracudapff.hoobes.flatter.activities.auth.in.SignInMainActivity;
 
 /**
@@ -45,7 +46,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.sign_in_button) {
-            MainActivity.basicStart(getActivity(), SignInMainActivity.class, 101);
+            MainActivity.basicStart(getActivity(), AuthActivity.class, 101);
         }
     }
 }
