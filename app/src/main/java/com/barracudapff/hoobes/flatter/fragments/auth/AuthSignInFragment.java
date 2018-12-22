@@ -15,6 +15,8 @@ import com.barracudapff.hoobes.flatter.R;
 import com.barracudapff.hoobes.flatter.activities.auth.in.LogInMailActivity;
 import com.barracudapff.hoobes.flatter.activities.auth.up.SignUpMainActivity;
 
+import java.util.ArrayList;
+
 public class AuthSignInFragment extends AuthSignBaseFragment {
     private OnAuthSignInFragmentInteractionListener mListener;
 
@@ -69,6 +71,14 @@ public class AuthSignInFragment extends AuthSignBaseFragment {
         addAnimationStep(view.findViewById(R.id.sign_up_button));
 
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        views = new ArrayList<>();
+        animations = new ArrayList<>();
+        delay = 100;
     }
 
     private void setUpCard(View view, View.OnClickListener listener) {

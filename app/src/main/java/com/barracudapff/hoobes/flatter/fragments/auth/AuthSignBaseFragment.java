@@ -14,13 +14,16 @@ import java.util.ArrayList;
 public class AuthSignBaseFragment extends Fragment {
     private Animation animationStart;
 
+    protected View startView;
+    protected ArrayList<View> views;
     protected ArrayList<Animation> animations;
     private Context context;
 
-    protected int delay = 100;
+    protected int delay = 00;
 
     public void setUp(Context context) {
         this.context = context;
+        views = new ArrayList<>();
         animations = new ArrayList<>();
 
         animationStart = AnimationUtils.loadAnimation(context, R.anim.slide_up);
@@ -29,10 +32,8 @@ public class AuthSignBaseFragment extends Fragment {
         animationStart.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-                System.out.println("Started");
                 for (Animation animation1 : animations) {
-                    System.out.println("!");
-                    //animation1.start();
+                    animation1.start();
                 }
             }
 
@@ -50,16 +51,23 @@ public class AuthSignBaseFragment extends Fragment {
 
 
     public void addAnimationStep(View view) {
-        view.setAnimation(fadeAnim(getOffset()));
+        Animation anim = fadeAnim(getOffset());
+        view.setAnimation(anim);
+        views.add(view);
+        animations.add(anim);
     }
 
     public void addAnimationStart(View view) {
         view.setAnimation(animationStart);
+        startView = view;
     }
 
     public void start() {
-        System.out.println("start");
-        //animationStart.startNow();
+        for (int i = 0; i < views.size(); i++) {
+            views.get(i).setAnimation(animations.get(i));
+        }
+
+        startView.startAnimation(animationStart);
     }
 
     private Animation fadeAnim(int offset) {
@@ -67,12 +75,11 @@ public class AuthSignBaseFragment extends Fragment {
         animationCloned.setInterpolator(new FastOutLinearInInterpolator());
         animationCloned.setStartOffset(offset);
 
-        animations.add(animationCloned);
         return animationCloned;
     }
 
     private int getOffset() {
-        delay += 200;
+        delay += 100;
         return delay;
     }
 }

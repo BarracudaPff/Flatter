@@ -1,9 +1,7 @@
 package com.barracudapff.hoobes.flatter.fragments.auth;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +9,7 @@ import android.widget.Toast;
 
 import com.barracudapff.hoobes.flatter.MainActivity;
 import com.barracudapff.hoobes.flatter.R;
-import com.barracudapff.hoobes.flatter.activities.auth.in.SignInMainActivity;
 import com.barracudapff.hoobes.flatter.activities.auth.up.LogUpMailActivity;
-import com.barracudapff.hoobes.flatter.support.StepAnimation;
 
 import java.util.ArrayList;
 
@@ -60,15 +56,22 @@ public class AuthSignUpFragment extends AuthSignBaseFragment {
         setUpCard(view.findViewById(R.id.sign_up_button), v ->
                 mListener.OnAuthSignUpFragmentInteraction());
 
-        System.out.println("Hey");
+        addAnimationStart(view.findViewById(R.id.in_logo));
+
+        addAnimationStep(view.findViewById(R.id.in_tag));
+        addAnimationStep(view.findViewById(R.id.cardViewGoogle));
+        addAnimationStep(view.findViewById(R.id.cardViewInstagram));
+        addAnimationStep(view.findViewById(R.id.cardViewVk));
+        addAnimationStep(view.findViewById(R.id.cardViewMail));
+        addAnimationStep(view.findViewById(R.id.sign_up_button));
+
         return view;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        System.err.println("DEst");
-        System.out.println("dasda");
+        views = new ArrayList<>();
         animations = new ArrayList<>();
         delay = 100;
     }
