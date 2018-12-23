@@ -12,6 +12,11 @@
         <item name="colorAccent">#111</item>
     </style>
 
+    <style name="EditTextTheme">
+        <item name="backgroundTint">@color/focus_tint_list</item>
+        <item name="colorAccent">#111</item>
+    </style>
+
     <style name="button_start_dialog">
         <item name="colorSecondary">#432</item>
         <item name="android:textStyle">bold</item>

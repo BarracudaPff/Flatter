@@ -1,25 +1,28 @@
 package com.barracudapff.hoobes.flatter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.barracudapff.hoobes.flatter.fragments.ChatListFragment;
-import com.barracudapff.hoobes.flatter.fragments.MapFragment;
-import com.barracudapff.hoobes.flatter.fragments.PartyListFragment;
-import com.barracudapff.hoobes.flatter.fragments.PersonFragment;
-import com.barracudapff.hoobes.flatter.fragments.SignInFragment;
-import com.barracudapff.hoobes.flatter.fragments.SocialFragment;
+import com.barracudapff.hoobes.flatter.database.models.User;
+import com.barracudapff.hoobes.flatter.fragments.screens.ChatListFragment;
+import com.barracudapff.hoobes.flatter.fragments.screens.MapFragment;
+import com.barracudapff.hoobes.flatter.fragments.screens.PartyListFragment;
+import com.barracudapff.hoobes.flatter.fragments.screens.PersonFragment;
+import com.barracudapff.hoobes.flatter.fragments.screens.SignInFragment;
+import com.barracudapff.hoobes.flatter.fragments.screens.SocialFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -64,7 +67,7 @@ public class MainActivity extends AppCompatActivity
         mapFragment = MapFragment.newInstance();
         partyListFragment = PartyListFragment.newInstance();
         socialFragment = SocialFragment.newInstance();
-        personFragment = PersonFragment.newInstance();
+        personFragment = new PersonFragment();
     }
 
     /**
@@ -142,6 +145,25 @@ public class MainActivity extends AppCompatActivity
                     case R.id.navigation_person:
                         switchToFragment(personFragment);
                 }
+            }
+        }
+        if (requestCode == 103) {
+            if (resultCode == RESULT_OK) {
+                System.out.println("#########\"#########\"#########");
+                FirebaseDatabase.getInstance().getReference()
+                        .child("users")
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                personFragment.updateUI(dataSnapshot.getValue(User.class));
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
             }
         }
     }

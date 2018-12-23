@@ -1,4 +1,4 @@
-package com.barracudapff.hoobes.flatter.fragments;
+package com.barracudapff.hoobes.flatter.fragments.screens;
 
 
 import android.os.Bundle;
@@ -8,23 +8,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.barracudapff.hoobes.flatter.R;
-import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SocialFragment extends Fragment {
+public class PartyListFragment extends Fragment {
 
 
-    public SocialFragment() {
+    public PartyListFragment() {
         // Required empty public constructor
     }
 
-    public static SocialFragment newInstance() {
+    public static PartyListFragment newInstance() {
         
         Bundle args = new Bundle();
         
-        SocialFragment fragment = new SocialFragment();
+        PartyListFragment fragment = new PartyListFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -33,11 +32,7 @@ public class SocialFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_social, container, false);
-        view.findViewById(R.id.floatingActionButton).setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();
-        });
-        return view;
+        return inflater.inflate(R.layout.fragment_party_list, container, false);
     }
 
 }

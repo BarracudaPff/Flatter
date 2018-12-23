@@ -1,9 +1,7 @@
-package com.barracudapff.hoobes.flatter.fragments;
+package com.barracudapff.hoobes.flatter.fragments.screens;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

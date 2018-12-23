@@ -1,18 +1,19 @@
-package com.barracudapff.hoobes.flatter.activities;
+package com.barracudapff.hoobes.flatter.activities.settings;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.barracudapff.hoobes.flatter.MainActivity;
 import com.barracudapff.hoobes.flatter.R;
+import com.barracudapff.hoobes.flatter.adapters.SettingsAdapter;
 
 public class SettingsActivity extends AppCompatActivity {
+    RecyclerView settingsRecyclerView;
+    SettingsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,14 @@ public class SettingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        adapter = new SettingsAdapter(this);
 
+        settingsRecyclerView = findViewById(R.id.settings_list);
+        settingsRecyclerView.setHasFixedSize(true);
+        settingsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        settingsRecyclerView.setAdapter(adapter);
+        settingsRecyclerView.addItemDecoration(
+                new DividerItemDecoration(settingsRecyclerView.getContext(),DividerItemDecoration.VERTICAL));
     }
 
     @Override

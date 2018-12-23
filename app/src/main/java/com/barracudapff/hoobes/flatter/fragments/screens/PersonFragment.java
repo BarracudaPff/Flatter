@@ -1,4 +1,4 @@
-package com.barracudapff.hoobes.flatter.fragments;
+package com.barracudapff.hoobes.flatter.fragments.screens;
 
 
 import android.annotation.SuppressLint;
@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import com.barracudapff.hoobes.flatter.MainActivity;
 import com.barracudapff.hoobes.flatter.R;
-import com.barracudapff.hoobes.flatter.activities.SettingsActivity;
+import com.barracudapff.hoobes.flatter.activities.settings.SettingsActivity;
 import com.barracudapff.hoobes.flatter.adapters.ProfilePhotosAdapter;
 import com.barracudapff.hoobes.flatter.database.models.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -120,7 +120,7 @@ public class PersonFragment extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
     @SuppressLint("SetTextI18n")
-    private void updateUI(User user) {
+    public void updateUI(User user) {
         adapter.notifyDataSetChanged();
         cover.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
@@ -133,28 +133,39 @@ public class PersonFragment extends Fragment implements SwipeRefreshLayout.OnRef
             personAge.setVisibility(View.GONE);
         } else {
             personAge.setText(String.valueOf(user.ages));
+            personDot.setVisibility(View.VISIBLE);
+            personAge.setVisibility(View.VISIBLE);
         }
 
         //parties count
         if (user.parties == 0) {
             personParties.setVisibility(View.GONE);
             personPartiesCount.setVisibility(View.GONE);
-        } else
+        } else {
             personPartiesCount.setText(String.valueOf(user.parties));
+            personParties.setVisibility(View.VISIBLE);
+            personPartiesCount.setVisibility(View.VISIBLE);
+        }
 
         //likes count
         if (user.likes == 0) {
             personLikes.setVisibility(View.GONE);
             personLikesCount.setVisibility(View.GONE);
-        } else
+        } else {
             personLikesCount.setText(String.valueOf(user.likes));
+            personLikes.setVisibility(View.VISIBLE);
+            personLikesCount.setVisibility(View.VISIBLE);
+        }
 
         //about info
         if (user.about == null) {
             personAbout.setVisibility(View.GONE);
             divider.setVisibility(View.GONE);
-        } else
+        } else {
             personAbout.setText(user.about);
+            personAbout.setVisibility(View.VISIBLE);
+            divider.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -182,6 +193,7 @@ public class PersonFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 return true;
             case R.id.item_sing_out:
                 FirebaseAuth.getInstance().signOut();
+                mListener.onSignOutInteraction();
                 return true;
         }
         return super.onOptionsItemSelected(item);

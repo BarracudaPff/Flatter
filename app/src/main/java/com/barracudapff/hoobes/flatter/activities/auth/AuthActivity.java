@@ -46,7 +46,6 @@ public class AuthActivity extends AppCompatActivity
         pager = findViewById(R.id.auth_main_content);
         pager.setAdapter(adapter);
         pager.setCurrentItem(0, false);
-        //((AuthSignBaseFragment) adapter.getItem(0)).start();
 
         pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -70,7 +69,6 @@ public class AuthActivity extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("Code is: " + requestCode + " " + resultCode);
         if (requestCode == 102) {
             if (resultCode == RESULT_OK) {
                 setResult(RESULT_OK);

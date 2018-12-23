@@ -6,6 +6,11 @@ import java.util.HashMap;
 
 @IgnoreExtraProperties
 public class User {
+    public static final String AGE = "ages";
+    public static final String PROFILE_PHOTOS = "profile_photo_url";
+    public static final String F_NAME = "first_name";
+    public static final String S_NAME = "second_name";
+    public static final String ABOUT = "about";
     //Must have data
     public String email;
     public String first_name;
@@ -49,6 +54,4 @@ public class User {
             profile_photo_url.put("profile_image_" + i, "none");
         }
     }
-
-    public static String PROFILE_PHOTOS = "profile_photo_url";
 }

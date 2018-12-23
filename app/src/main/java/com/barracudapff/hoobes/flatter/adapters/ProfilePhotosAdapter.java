@@ -6,11 +6,13 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.barracudapff.hoobes.flatter.R;
 import com.barracudapff.hoobes.flatter.database.models.User;
 import com.google.firebase.storage.FirebaseStorage;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 public class ProfilePhotosAdapter extends PagerAdapter {
@@ -41,6 +43,7 @@ public class ProfilePhotosAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View itemView = layoutInflater.inflate(R.layout.item_profle_photo, container, false);
         ImageView imageView = itemView.findViewById(R.id.viewPagerItem_image1);
+        View darker = itemView.findViewById(R.id.darker);
 
         FirebaseStorage.getInstance().getReference()
                 .child("images")
@@ -53,7 +56,13 @@ public class ProfilePhotosAdapter extends PagerAdapter {
                     Picasso.get().load(task.getResult())
                             //.placeholder(R.color.lightGray)
                             .error(R.color.lightGray)
-                            .into(imageView);
+                            .into(imageView, new Callback.EmptyCallback(){
+                                @Override
+                                public void onSuccess() {
+                                    darker.setVisibility(View.VISIBLE);
+                                }
+                            })
+                    ;
 
                     container.addView(itemView);
                 });
@@ -62,7 +71,7 @@ public class ProfilePhotosAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((ImageView) object);
+        container.removeView((FrameLayout) object);
     }
 
     @Override

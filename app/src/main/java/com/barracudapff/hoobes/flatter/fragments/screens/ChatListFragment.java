@@ -1,4 +1,4 @@
-package com.barracudapff.hoobes.flatter.fragments;
+package com.barracudapff.hoobes.flatter.fragments.screens;
 
 
 import android.os.Bundle;
@@ -12,18 +12,16 @@ import com.barracudapff.hoobes.flatter.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PartyListFragment extends Fragment {
+public class ChatListFragment extends Fragment {
 
 
-    public PartyListFragment() {
+    public ChatListFragment() {
         // Required empty public constructor
     }
 
-    public static PartyListFragment newInstance() {
-        
+    public static ChatListFragment newInstance() {
+        ChatListFragment fragment = new ChatListFragment();
         Bundle args = new Bundle();
-        
-        PartyListFragment fragment = new PartyListFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -32,7 +30,7 @@ public class PartyListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_party_list, container, false);
+        return inflater.inflate(R.layout.fragment_chat_list, container, false);
     }
 
 }

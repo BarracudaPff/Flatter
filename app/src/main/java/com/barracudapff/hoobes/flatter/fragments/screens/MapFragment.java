@@ -1,4 +1,4 @@
-package com.barracudapff.hoobes.flatter.fragments;
+package com.barracudapff.hoobes.flatter.fragments.screens;
 
 
 import android.os.Bundle;
@@ -9,8 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.barracudapff.hoobes.flatter.R;
-
-import java.util.Objects;
+import com.barracudapff.hoobes.flatter.fragments.DebugFragment;
 
 /**
  * A simple {@link Fragment} subclass.
