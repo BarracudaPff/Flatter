@@ -39,8 +39,17 @@
         </activity>
         <activity
             android:name=".activities.auth.AuthActivity"
-            android:theme="@style/AppTheme.SingIn"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.SingIn">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.barracudapff.hoobes.flatter.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.barracudapff.hoobes.flatter.MainActivity" />

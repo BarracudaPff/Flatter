@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -22,7 +23,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity
+        implements BottomNavigationView.OnNavigationItemSelectedListener,
+        PersonFragment.OnSignOutInterface {
+
+    BottomNavigationView navigationView;
 
     private ChatListFragment chatListFragment;
     private MapFragment mapFragment;
@@ -47,8 +52,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
      * Simple NavBar setup
      */
     private void setUpNavigationBar() {
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(this);
+        navigationView = findViewById(R.id.navigation);
+        navigationView.setOnNavigationItemSelectedListener(this);
     }
 
     /**
@@ -124,4 +129,25 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return false;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 102) {
+            if (resultCode == RESULT_OK) {
+                System.out.println(navigationView.getSelectedItemId());
+                switch (navigationView.getSelectedItemId()) {
+                    case R.id.navigation_chat_list:
+                        switchToFragment(chatListFragment);
+                        return;
+                    case R.id.navigation_person:
+                        switchToFragment(personFragment);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onSignOutInteraction() {
+        switchToFragment(SignInFragment.newInstance());
+    }
 }

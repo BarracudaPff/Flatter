@@ -7,14 +7,14 @@
     <color name="login">#0072c6</color>
 
     <color name="lightGray">#eee</color>
-    <color name="darkGray">#aaa</color>
+    <color name="darkGray">#aaaaaa</color>
 
     <color name="selector_item_color">#000</color>
     <color name="white">#fff</color>
     <color name="fragment_background">#eee</color>
 
     <color name="free">#2196F3</color>
-    <color name="closed">#f44336</color>
+    <color name="closed">#312322</color>
 
     <color name="optionsColor">#fff</color>
 

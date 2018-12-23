@@ -135,6 +135,7 @@ public class LogUpMailActivity extends LoginBaseActivity {
                     hideProgressDialog();
 
                     if (task.isSuccessful()) {
+                        System.out.println(task.getResult().getAdditionalUserInfo().getProviderId());
                         writeNewUser(task, mEmailField, mFirstName, mSecondName);
                         setResult(Activity.RESULT_OK);
                         finish();

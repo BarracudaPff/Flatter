@@ -11,12 +11,17 @@ public class User {
     public String first_name;
     public String second_name;
 
+    public int parties;
+    public int likes;
+
+    public String UID;
+
     //Ask later data
     public HashMap<String, String> profile_photo_url;
     public int ages;
     public String phone;
     public boolean gender;
-    public String info;
+    public String about;
 
     //Auto data
     // TODO: 13.09.2018 import auto data
@@ -25,11 +30,14 @@ public class User {
         // Default constructor required
     }
 
-    public User(String email, String first_name, String second_name) {
+    public User(String email, String first_name, String second_name, String UID) {
         this.email = email;
         this.first_name = first_name;
         this.second_name = second_name;
         this.ages = -1;
+        this.parties = 0;
+        this.likes = 0;
+        this.UID = UID;
 
         prepareProfilePhotoes();
     }
@@ -42,17 +50,5 @@ public class User {
         }
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "email='" + email + '\'' +
-                ", first_name='" + first_name + '\'' +
-                ", second_name='" + second_name + '\'' +
-                ", profile_photo_url='" + profile_photo_url + '\'' +
-                ", ages=" + ages +
-                ", phone='" + phone + '\'' +
-                ", gender=" + gender +
-                ", info='" + info + '\'' +
-                '}';
-    }
+    public static String PROFILE_PHOTOS = "profile_photo_url";
 }

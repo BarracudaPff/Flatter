@@ -2,6 +2,16 @@
     <string name="app_name">Flatter</string>
     <string name="flatter_tag_line">TODO: Find your party</string>
 
+    <!--Keys-->
+    <string name="google_web_client_id">690797786947-p3c15gcq4bovk2uhklbcssnrrhjdijcv.apps.googleusercontent.com</string>
+
+    <!--Errors-->
+    <string name="error_login_title">Ошибка Авторизации</string>
+    <string name="error_login_password_login">Неверный логин или пароль</string>
+    <string name="error_login_disable">Аккаунт был деактивирован</string>
+    <string name="error_login_extra">Произошла ошибка авторизации, попробуйте еще раз</string>
+    <string name="error_loading">Произошла ошибка при загрузке</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_social">Люди рядом</string>
     <string name="title_chat">Чат</string>
@@ -41,10 +51,7 @@
     <string name="action_logout">Выйти</string>
     <string name="action_retry">Повторить</string>
 
-    <!--Errors-->
-    <string name="error_login_title">Ошибка Авторизации</string>
-    <string name="error_login_password_login">Неверный логин или пароль</string>
-    <string name="error_login_disable">Аккаунт был деактивирован</string>
-    <string name="error_login_extra">Произошла ошибка авторизации, попробуйте еще раз</string>
-    <string name="error_loading">Произошла ошибка при загрузке</string>
+    <!--Fake-->
+    <string name="person_description">Canadian actor, director, producer, and musician. An avid motorcyclist, Reeves co-founded Arch</string>
+    <string name="title_activity_settings">Settings</string>
 </resources>

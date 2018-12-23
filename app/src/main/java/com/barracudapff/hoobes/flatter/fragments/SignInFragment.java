@@ -1,7 +1,9 @@
 package com.barracudapff.hoobes.flatter.fragments;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +47,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.sign_in_button) {
-            MainActivity.basicStart(getActivity(), AuthActivity.class, 101);
+            MainActivity.basicStart(getActivity(), AuthActivity.class, 102);
         }
     }
 }
