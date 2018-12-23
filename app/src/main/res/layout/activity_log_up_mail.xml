@@ -61,7 +61,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/editText6"
+                    android:id="@+id/sign_up_f_name"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginTop="24dp"
@@ -70,7 +70,7 @@
                     android:ellipsize="end"
                     android:ems="10"
                     android:hint="@string/first_name"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
                     android:selectAllOnFocus="true"
                     android:singleLine="true"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +79,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/log_in_label" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/sign_up_s_name"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginTop="16dp"
@@ -88,16 +88,16 @@
                     android:ellipsize="end"
                     android:ems="10"
                     android:hint="@string/second_name"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
                     android:selectAllOnFocus="true"
                     android:singleLine="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText6" />
+                    app:layout_constraintTop_toBottomOf="@+id/sign_up_f_name" />
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/sign_up_email"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginTop="16dp"
@@ -112,10 +112,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText3" />
+                    app:layout_constraintTop_toBottomOf="@+id/sign_up_s_name" />
 
                 <EditText
-                    android:id="@+id/editText4"
+                    android:id="@+id/sign_up_pass"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -130,10 +130,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText5" />
+                    app:layout_constraintTop_toBottomOf="@+id/sign_up_email" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/forgot_pass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -142,7 +142,7 @@
                     android:textAppearance="@style/sign_up"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText4" />
+                    app:layout_constraintTop_toBottomOf="@+id/sign_up_pass" />
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>
 

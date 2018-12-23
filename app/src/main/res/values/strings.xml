@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Flatter</string>
     <string name="flatter_tag_line">TODO: Find your party</string>
 
@@ -22,16 +22,29 @@
     <string name="password">Пароль</string>
     <string name="title_activity_sign_in_list">Title</string>
 
-    <string name="google_sign_in">Войти через Google</string>
-    <string name="instagram_sign_in">Войти через Instagram</string>
-    <string name="vk_sign_in">Войти через Вконтакте</string>
-    <string name="mail_sign_in">Войти через Почту</string>
+    <string name="google_sign_in">Sign in with Google</string>
+    <string name="instagram_sign_in">Sign in with Instagram</string>
+    <string name="vk_sign_in">Sign in with Vk</string>
+    <string name="mail_sign_in">Sign in with Mail</string>
 
-    <string name="google_sign_up">Зайти через Google</string>
-    <string name="instagram_sign_up">Зайти через Instagram</string>
-    <string name="vk_sign_up">Зайти через Вконтакте</string>
-    <string name="mail_sign_up">Зайти через Почту</string>
+    <string name="google_sign_up">Sign up with Google</string>
+    <string name="instagram_sign_up">Sign up with Instagram</string>
+    <string name="vk_sign_up">Sign up with Vk</string>
+    <string name="mail_sign_up">Sign up with Mail</string>
     <string name="title_activity_sign_up_mail">SignUpMailActivity</string>
     <string name="first_name">Имя</string>
     <string name="second_name">Фамилия</string>
+
+    <string name="loading" tools:ignore="TypographyEllipsis">Загрузка...</string>
+    <string name="required">Пустое поле</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_logout">Выйти</string>
+    <string name="action_retry">Повторить</string>
+
+    <!--Errors-->
+    <string name="error_login_title">Ошибка Авторизации</string>
+    <string name="error_login_password_login">Неверный логин или пароль</string>
+    <string name="error_login_disable">Аккаунт был деактивирован</string>
+    <string name="error_login_extra">Произошла ошибка авторизации, попробуйте еще раз</string>
+    <string name="error_loading">Произошла ошибка при загрузке</string>
 </resources>
