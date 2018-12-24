@@ -13,39 +13,37 @@ public class Party implements Serializable {
     public double longitude;
     public String name;
     public long dateTime;
-    // TODO: 05.10.2018 Rename address
-    public String adress;
+    public String address;
     public String author;
-    public String authorUid;
+    public String author_uid;
     public int likes;
+    public String profile_image;
     public ArrayList<String> members;
     public ArrayList<String> images;
 
     //expand data
     public boolean isFree;
     public String about;
-
-    @Exclude
-    public String key;
+    public String uid;
 
     public Party() {
     }
 
-    public Party(double latitude, double longitude, String name, long dateTime, String adress, String author, String authorUid, int rating, ArrayList<String> members, boolean isFree, String about) {
+    public Party(double latitude, double longitude, String name, long dateTime, String address, String author, String authorUid, String profile_image, ArrayList<String> members, boolean isFree, String about, String uid) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;
         this.dateTime = dateTime;
-        this.adress = adress;
+        this.address = address;
         this.author = author;
-        this.authorUid = authorUid;
-        this.likes = rating;
+        this.author_uid = authorUid;
+        this.profile_image = profile_image;
         this.members = members;
         this.isFree = isFree;
         this.about = about;
+        this.likes = 0;
+        this.uid = uid;
     }
-
-    @Exclude
 
     @Override
     public String toString() {
@@ -54,15 +52,14 @@ public class Party implements Serializable {
                 ", longitude=" + longitude +
                 ", name='" + name + '\'' +
                 ", dateTime=" + dateTime +
-                ", adress='" + adress + '\'' +
+                ", address='" + address + '\'' +
                 ", author='" + author + '\'' +
-                ", authorUid='" + authorUid + '\'' +
+                ", author_uid='" + author_uid + '\'' +
                 ", likes=" + likes +
                 ", members=" + members +
                 ", images=" + images +
                 ", isFree=" + isFree +
                 ", about='" + about + '\'' +
-                ", key='" + key + '\'' +
                 '}';
     }
 }
