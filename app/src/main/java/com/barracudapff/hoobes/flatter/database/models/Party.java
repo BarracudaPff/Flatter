@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 @IgnoreExtraProperties
 public class Party implements Serializable {
-    //map data
+    //mMap data
     public double latitude;
     public double longitude;
     public String name;
