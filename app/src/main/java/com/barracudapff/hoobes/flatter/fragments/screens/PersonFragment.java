@@ -89,9 +89,11 @@ public class PersonFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         user = dataSnapshot.getValue(User.class);
+                        System.out.println(user);
+                        System.out.println("!!!!");
+                        User.saveCurrent(getContext(), user);
                         adapter.setUser(user);
                         updateUI(user);
-                        System.out.println(user);
                     }
 
                     @Override

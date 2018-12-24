@@ -2,6 +2,7 @@
     <string name="app_name">Flatter</string>
     <string name="flatter_tag_line">TODO: Find your party</string>
     <string name="profile_settings_name">Настройки пользователя</string>
+    <string name="title_activity_create_party">Создать Вечеринку</string>
 
     <!--Keys-->
     <string name="google_web_client_id">690797786947-p3c15gcq4bovk2uhklbcssnrrhjdijcv.apps.googleusercontent.com</string>
@@ -61,4 +62,6 @@
     <string name="connect">Подключить</string>
     <string name="instagram">Instagram</string>
     <string name="title_activity_profile_settings">ProfileSettingsActivity</string>
+    <string name="cancel">Отменить</string>
+    <string name="add">Добавить</string>
 </resources>

@@ -48,7 +48,7 @@ public class ProfilePhotosAdapter extends PagerAdapter {
         FirebaseStorage.getInstance().getReference()
                 .child("images")
                 .child("users")
-                .child(user.UID)
+                .child(user.uid)
                 .child(User.PROFILE_PHOTOS)
                 .child((position + 1) + ".jpg")
                 .getDownloadUrl()

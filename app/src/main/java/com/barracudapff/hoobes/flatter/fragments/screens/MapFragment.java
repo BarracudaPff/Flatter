@@ -3,25 +3,25 @@ package com.barracudapff.hoobes.flatter.fragments.screens;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.barracudapff.hoobes.flatter.R;
+import com.barracudapff.hoobes.flatter.activities.party.CreatePartyActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -29,6 +29,7 @@ import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Locale;
 
@@ -44,7 +45,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     protected GoogleMap mMap;
     protected Geocoder geocoder;
     protected BottomSheetBehavior sheetBehavior;
-    Button btnBottomSheet;
 
     private LocationListener mLocationListener = new LocationListener() {
         @Override
@@ -97,6 +97,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         mapView.getMapAsync(this);
 
         ConstraintLayout layoutBottomSheet = view.findViewById(R.id.bottom_sheet);
+        layoutBottomSheet.setOnClickListener(v -> {
+            ;
+        });
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
         sheetBehavior.setHideable(true);
         sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
@@ -183,15 +186,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-    }
-
-    @Override
     public void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
     }
 
     @Override
@@ -208,13 +206,28 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
     @Override
     public void onMapLongClick(LatLng latLng) {
-        if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
-            sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            //btnBottomSheet.setText("Close sheet");
-        } else {
-            sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-            //btnBottomSheet.setText("Expand sheet");
-        }
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext(), R.style.AlertDialogCustom);
+        mBuilder.setCancelable(true)
+                .setTitle("Создать новою вечеринку")
+                .setNegativeButton(R.string.cancel,
+                        (dialog, which) -> {
+                        });
+        if (FirebaseAuth.getInstance().getCurrentUser() == null)
+            mBuilder.setPositiveButton(R.string.add,
+                    (dialog, which) -> {
+                        Toast.makeText(getContext(), "Нужно авторизоваться, чтобы создать свою вечеринку", Toast.LENGTH_SHORT).show();
+                    });
+        else
+            mBuilder.setPositiveButton(R.string.add,
+                    (dialog, which) -> {
+                        LatLng touchPosition = new LatLng(latLng.latitude, latLng.longitude);
+                        Intent intent = new Intent(getActivity(), CreatePartyActivity.class);
+                        intent.putExtra("POSITION_LAT", touchPosition.latitude);
+                        intent.putExtra("POSITION_LON", touchPosition.longitude);
+                        startActivityForResult(intent, 105);
+                    });
+
+        mBuilder.create().show();
     }
 
     @Override
@@ -222,3 +235,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         return false;
     }
 }
+/*if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+                sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                //btnBottomSheet.setText("Close sheet");
+            } else {
+                sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                //btnBottomSheet.setText("Expand sheet");
+            }*/

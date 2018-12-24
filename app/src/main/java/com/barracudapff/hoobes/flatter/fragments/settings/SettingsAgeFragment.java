@@ -60,7 +60,7 @@ public class SettingsAgeFragment extends SettingsBaseFragment {
                     Toast.makeText(getContext(), "Некоректный возраст", Toast.LENGTH_SHORT).show();
                     return false;
                 }
-                write(User.AGE, age);
+                write(User.AGES, age);
                 return true;
         }
         return super.onOptionsItemSelected(item);

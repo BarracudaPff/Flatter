@@ -84,13 +84,14 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * Starts new activity with code {@param code}
-     * @param context Parent Activity
+     *
+     * @param context  Parent Activity
      * @param activity New Activity
-     * @param code request code
+     * @param code     request code
      */
     public static void basicStart(Activity context, Class activity, int code) {
         Intent starter = new Intent(context, activity);
-        context.startActivityForResult(starter,code);
+        context.startActivityForResult(starter, code);
     }
 
     /**
@@ -135,6 +136,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //Auth
         if (requestCode == 102) {
             if (resultCode == RESULT_OK) {
                 System.out.println(navigationView.getSelectedItemId());
@@ -147,6 +149,7 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         }
+        //Settings
         if (requestCode == 103) {
             if (resultCode == RESULT_OK) {
                 System.out.println("#########\"#########\"#########");
@@ -156,7 +159,9 @@ public class MainActivity extends AppCompatActivity
                         .addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                personFragment.updateUI(dataSnapshot.getValue(User.class));
+                                User user = dataSnapshot.getValue(User.class);
+                                User.saveCurrent(getBaseContext(), user);
+                                personFragment.updateUI(user);
                             }
 
                             @Override
