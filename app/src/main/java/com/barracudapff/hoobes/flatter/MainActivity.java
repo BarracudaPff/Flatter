@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.barracudapff.hoobes.flatter.database.models.Party;
 import com.barracudapff.hoobes.flatter.database.models.User;
 import com.barracudapff.hoobes.flatter.fragments.screens.ChatListFragment;
 import com.barracudapff.hoobes.flatter.fragments.screens.MapFragment;
@@ -139,7 +140,6 @@ public class MainActivity extends AppCompatActivity
         //Auth
         if (requestCode == 102) {
             if (resultCode == RESULT_OK) {
-                System.out.println(navigationView.getSelectedItemId());
                 switch (navigationView.getSelectedItemId()) {
                     case R.id.navigation_chat_list:
                         switchToFragment(chatListFragment);
@@ -152,7 +152,6 @@ public class MainActivity extends AppCompatActivity
         //Settings
         if (requestCode == 103) {
             if (resultCode == RESULT_OK) {
-                System.out.println("#########\"#########\"#########");
                 FirebaseDatabase.getInstance().getReference()
                         .child("users")
                         .child(FirebaseAuth.getInstance().getUid())
@@ -169,6 +168,12 @@ public class MainActivity extends AppCompatActivity
 
                             }
                         });
+            }
+        }
+        //Add party
+        if (requestCode == 105) {
+            if (resultCode == RESULT_OK) {
+                mapFragment.addMarker(Party.getFromIntent(data));
             }
         }
     }

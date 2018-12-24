@@ -114,7 +114,7 @@ public class CreatePartyActivity extends AppCompatActivity implements OnMapReady
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, getResources().getConfiguration().locale);
             partyTime.setText(sdf.format(myCalendar.getTime()));
             time = myCalendar.getTime().getTime();
         };
@@ -189,10 +189,10 @@ public class CreatePartyActivity extends AppCompatActivity implements OnMapReady
         bitmapLow25.compress(Bitmap.CompressFormat.JPEG, 25, baosLow);
         byte[] dataLow = baosLow.toByteArray();
 
-        StorageReference storageRefLow = FirebaseStorage.getInstance().getReference().child("parties").child(key).child("image_low_25_" + 0);
+        StorageReference storageRefLow = FirebaseStorage.getInstance().getReference().child("parties").child(key).child(Party.PROFILE_IMAGE + "_low_25");
         uploadPicture(storageRefLow, dataLow, true, key);
 
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("parties").child(key).child("image_" + 0);
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("parties").child(key).child(Party.PROFILE_IMAGE);
         uploadPicture(storageRef, dataFull, false, key);
 
     }
@@ -206,13 +206,12 @@ public class CreatePartyActivity extends AppCompatActivity implements OnMapReady
             }
         }).addOnSuccessListener(taskSnapshot -> {
             if (isFull) {
-                FirebaseDatabase.getInstance()
-                        .getReference()
+                FirebaseDatabase.getInstance().getReference()
+                        .child("images")
                         .child("parties")
                         .child(key)
-                        .child("images")
-                        .child("0")
-                        .setValue("image_0");
+                        .child(Party.PROFILE_IMAGE)
+                        .setValue(true);
                 Toast.makeText(this, "Success upload", Toast.LENGTH_SHORT).show();
             }
         });
@@ -226,10 +225,6 @@ public class CreatePartyActivity extends AppCompatActivity implements OnMapReady
         if (!validateTime(partyTime))
             return;
 
-        String url = null;
-        if (isChangedImage)
-            url = "profile";
-
         ArrayList<String> members = new ArrayList<>();
         members.add(user.uid);
 
@@ -237,7 +232,12 @@ public class CreatePartyActivity extends AppCompatActivity implements OnMapReady
                 .child("parties")
                 .push().getKey();
 
-        System.out.println("Key: " + key);
+        FirebaseDatabase.getInstance().getReference().child("user-parties")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child(key).setValue(true);
+        if (isChangedImage)
+            sendToFirebase(((BitmapDrawable) partyImage.getDrawable()).getBitmap()
+                    , ((BitmapDrawable) partyImage.getDrawable()).getBitmap(), key);
 
         Party party = new Party(position.latitude
                 , position.longitude
@@ -246,7 +246,7 @@ public class CreatePartyActivity extends AppCompatActivity implements OnMapReady
                 , partyAdress.getText().toString()
                 , user.first_name + " " + user.second_name
                 , user.uid
-                , url
+                , isChangedImage
                 , members
                 , partyFree.isChecked()
                 , partyAbout.getText().toString()
@@ -257,21 +257,15 @@ public class CreatePartyActivity extends AppCompatActivity implements OnMapReady
                 .child(key)
                 .setValue(party)
                 .addOnSuccessListener(aVoid -> {
-                    setResult(RESULT_OK);
+                    Intent intent = new Intent();
+                    Party.putInIntent(intent, party);
+                    setResult(RESULT_OK, intent);
                     finish();
                 })
                 .addOnFailureListener(e -> {
                     e.printStackTrace();
                     Toast.makeText(this, "Ошибка при создании вечеринки", Toast.LENGTH_SHORT).show();
                 });
-
-
-        FirebaseDatabase.getInstance().getReference().child("user-parties")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .child(key).setValue(true);
-        if (isChangedImage)
-            sendToFirebase(((BitmapDrawable) partyImage.getDrawable()).getBitmap()
-                    , ((BitmapDrawable) partyImage.getDrawable()).getBitmap(), key);
 
         System.out.println(party);
     }

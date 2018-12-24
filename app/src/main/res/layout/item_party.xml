@@ -4,15 +4,13 @@
     android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    android:clickable="true"
-    android:focusable="true"
+    android:background="@color/lightGray"
     app:behavior_hideable="true"
     app:behavior_peekHeight="56dp"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/party_name"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
         android:layout_marginStart="8dp"
@@ -23,9 +21,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/party_free_entry"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:gravity="center"
         android:text="Free entry"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -34,182 +33,188 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/party_profile"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:srcCompat="@android:color/darker_gray" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_keyboard_arrow_up_24dp" />
 
-    <ImageView
-        android:id="@+id/clock"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/location"
-        app:layout_constraintStart_toEndOf="@+id/party_profile"
-        app:layout_constraintTop_toTopOf="@+id/party_profile"
-        app:srcCompat="@drawable/ic_clock_18dp" />
-
-    <ImageView
-        android:id="@+id/location"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/party_author_image"
-        app:layout_constraintStart_toEndOf="@+id/party_profile"
-        app:layout_constraintTop_toBottomOf="@+id/clock"
-        app:srcCompat="@drawable/ic_position" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="15"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintBottom_toBottomOf="@+id/clock"
-        app:layout_constraintStart_toEndOf="@+id/clock"
-        app:layout_constraintTop_toTopOf="@+id/clock" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Name SName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toBottomOf="@+id/party_author_image"
-        app:layout_constraintEnd_toStartOf="@+id/image1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/party_author_image"
-        app:layout_constraintTop_toTopOf="@+id/party_author_image" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:text="2018"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintBottom_toBottomOf="@+id/clock"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/clock" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="september"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintBottom_toBottomOf="@+id/clock"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/clock" />
-
-    <TextView
-        android:id="@+id/textView9"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/content"
         android:layout_width="0dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="Address where party is"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintBottom_toTopOf="@+id/party_author_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/location"
-        app:layout_constraintTop_toBottomOf="@+id/clock" />
-
-    <ImageView
-        android:id="@+id/party_author_image"
-        android:layout_width="@dimen/little_circle_image"
-        android:layout_height="23dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/party_profile"
-        app:layout_constraintTop_toBottomOf="@+id/location"
-        app:srcCompat="@drawable/ic_google" />
-
-    <ImageView
-        android:id="@+id/imageMore"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/image1"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/image1"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/a_lot_of_circles" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/party_name">
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:gravity="center"
-        android:text="+7"
-        android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"
-        app:layout_constraintBottom_toBottomOf="@+id/imageMore"
-        app:layout_constraintEnd_toEndOf="@+id/imageMore"
-        app:layout_constraintTop_toTopOf="@+id/imageMore" />
+        <TextView
+            android:id="@+id/party_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="15 september 2018"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintBottom_toBottomOf="@+id/clock"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/clock"
+            app:layout_constraintTop_toTopOf="@+id/clock" />
 
-    <android.support.v4.widget.Space
-        android:id="@+id/space3"
-        android:layout_width="@dimen/space_width"
-        android:layout_height="@dimen/space_height"
-        app:layout_constraintBottom_toBottomOf="@+id/image1"
-        app:layout_constraintEnd_toEndOf="@+id/image3"
-        app:layout_constraintTop_toTopOf="@+id/image1"
-        app:layout_constraintVertical_bias="1.0" />
+        <ImageView
+            android:id="@+id/party_profile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/image3"
-        android:layout_width="@dimen/little_circle_image"
-        android:layout_height="@dimen/little_circle_image"
-        app:layout_constraintBottom_toBottomOf="@+id/image1"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toTopOf="@+id/image1"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_google" />
+        <ImageView
+            android:id="@+id/party_member_2"
+            android:layout_width="@dimen/little_circle_image"
+            android:layout_height="@dimen/little_circle_image"
+            app:layout_constraintBottom_toBottomOf="@+id/party_member_1"
+            app:layout_constraintEnd_toStartOf="@+id/space3"
+            app:layout_constraintTop_toTopOf="@+id/party_member_1"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_google" />
 
-    <android.support.v4.widget.Space
-        android:id="@+id/space2"
-        android:layout_width="@dimen/space_width"
-        android:layout_height="@dimen/space_height"
-        app:layout_constraintBottom_toBottomOf="@+id/image1"
-        app:layout_constraintEnd_toEndOf="@+id/image2"
-        app:layout_constraintTop_toTopOf="@+id/image1"
-        app:layout_constraintVertical_bias="0.0" />
+        <ImageView
+            android:id="@+id/clock"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/location"
+            app:layout_constraintStart_toEndOf="@+id/party_profile"
+            app:layout_constraintTop_toTopOf="@+id/party_profile"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:srcCompat="@drawable/ic_clock_18dp" />
 
-    <ImageView
-        android:id="@+id/image2"
-        android:layout_width="@dimen/little_circle_image"
-        android:layout_height="@dimen/little_circle_image"
-        app:layout_constraintBottom_toBottomOf="@+id/image1"
-        app:layout_constraintEnd_toStartOf="@+id/space3"
-        app:layout_constraintTop_toTopOf="@+id/image1"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_google" />
+        <TextView
+            android:id="@+id/party_address"
+            android:layout_width="0dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Address where party is"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintBottom_toTopOf="@+id/party_author_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/location"
+            app:layout_constraintTop_toBottomOf="@+id/clock" />
 
-    <ImageView
-        android:id="@+id/image1"
-        android:layout_width="@dimen/little_circle_image"
-        android:layout_height="@dimen/little_circle_image"
-        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toStartOf="@+id/image3"
-        app:layout_constraintTop_toTopOf="@+id/textView6"
-        app:srcCompat="@drawable/ic_google" />
+        <ImageView
+            android:id="@+id/imageMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/party_member_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/party_member_1"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/a_lot_of_circles" />
+
+        <ImageView
+            android:id="@+id/party_author_image"
+            android:layout_width="@dimen/little_circle_image"
+            android:layout_height="23dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/party_profile"
+            app:layout_constraintStart_toEndOf="@+id/party_profile"
+            app:layout_constraintTop_toBottomOf="@+id/location"
+            app:srcCompat="@drawable/ic_google" />
+
+        <ImageView
+            android:id="@+id/party_member_3"
+            android:layout_width="@dimen/little_circle_image"
+            android:layout_height="@dimen/little_circle_image"
+            app:layout_constraintBottom_toBottomOf="@+id/party_member_1"
+            app:layout_constraintEnd_toStartOf="@+id/party_member_more"
+            app:layout_constraintTop_toTopOf="@+id/party_member_1"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_google" />
+
+        <android.support.v4.widget.Space
+            android:id="@+id/space2"
+            android:layout_width="@dimen/space_width"
+            android:layout_height="@dimen/space_height"
+            app:layout_constraintBottom_toBottomOf="@+id/party_member_1"
+            app:layout_constraintEnd_toEndOf="@+id/party_member_2"
+            app:layout_constraintTop_toTopOf="@+id/party_member_1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/location"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/party_author_image"
+            app:layout_constraintStart_toEndOf="@+id/party_profile"
+            app:layout_constraintTop_toBottomOf="@+id/clock"
+            app:srcCompat="@drawable/ic_position" />
+
+        <TextView
+            android:id="@+id/party_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Name SName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintBottom_toBottomOf="@+id/party_author_image"
+            app:layout_constraintEnd_toStartOf="@+id/party_member_1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/party_author_image"
+            app:layout_constraintTop_toTopOf="@+id/party_author_image" />
+
+        <TextView
+            android:id="@+id/party_member_more"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:text="+7"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"
+            app:layout_constraintBottom_toBottomOf="@+id/imageMore"
+            app:layout_constraintEnd_toEndOf="@+id/imageMore"
+            app:layout_constraintTop_toTopOf="@+id/imageMore" />
+
+        <android.support.v4.widget.Space
+            android:id="@+id/space3"
+            android:layout_width="@dimen/space_width"
+            android:layout_height="@dimen/space_height"
+            app:layout_constraintBottom_toBottomOf="@+id/party_member_1"
+            app:layout_constraintEnd_toEndOf="@+id/party_member_3"
+            app:layout_constraintTop_toTopOf="@+id/party_member_1"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/party_member_1"
+            android:layout_width="@dimen/little_circle_image"
+            android:layout_height="@dimen/little_circle_image"
+            app:layout_constraintBottom_toBottomOf="@+id/party_author"
+            app:layout_constraintEnd_toStartOf="@+id/party_member_3"
+            app:layout_constraintTop_toTopOf="@+id/party_author"
+            app:srcCompat="@drawable/ic_google" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
