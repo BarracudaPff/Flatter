@@ -257,7 +257,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
     @Override
     public void onMapClick(LatLng latLng) {
-
+        if (sheetBehavior.getState() != BottomSheetBehavior.STATE_HIDDEN) {
+            sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        }
     }
 
     @Override
@@ -291,12 +293,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         System.out.println(marker.getTitle());
         for (Party party : parties) {
             if (party.name.equals(marker.getTitle())) {
-                if (sheetBehavior.getState() != BottomSheetBehavior.STATE_COLLAPSED) {
+                if (sheetBehavior.getState() == BottomSheetBehavior.STATE_COLLAPSED
+                        || sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+                    bottmViewHolder.onBindView(getContext(), party);
+                } else {
                     bottmViewHolder.onBindView(getContext(), party);
                     sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                } else {
-                    sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-                    //btnBottomSheet.setText("Expand sheet");
                 }
                 return false;
             }
