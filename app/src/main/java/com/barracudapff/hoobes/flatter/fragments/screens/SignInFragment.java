@@ -2,6 +2,7 @@ package com.barracudapff.hoobes.flatter.fragments.screens;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Flatter");
 
         TextView btn_sign_in = view.findViewById(R.id.sign_in_button);
         btn_sign_in.setOnClickListener(this);

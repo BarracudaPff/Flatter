@@ -14,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -39,8 +38,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -219,11 +216,16 @@ public class CreatePartyActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onClick(View v) {
-        if (!validates(partyName, partyName, partyName))
+        if (!validates(partyName, partyAbout))
             return;
 
         if (!validateTime(partyTime))
             return;
+
+        if (!isChangedImage) {
+            Toast.makeText(this,"Нужно выбрать фотографию", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         ArrayList<String> members = new ArrayList<>();
         members.add(user.uid);

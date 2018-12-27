@@ -75,9 +75,11 @@ public abstract class LoginBaseActivity extends AppCompatActivity implements Vie
     }
 
     protected void writeNewUser(Task<AuthResult> task, EditText email, EditText firstName, EditText secondName) {
+        String fName = firstName.getText().toString().replace(" ", "");
+        String sName = secondName.getText().toString().replace(" ", "");
         User user = new User(email.getText().toString().replace(" ", "").toLowerCase()
-                , firstName.getText().toString().replace(" ", "")
-                , secondName.getText().toString().replace(" ", ""),
+                , fName.substring(0, 1).toUpperCase() + fName.substring(1)
+                , sName.substring(0, 1).toUpperCase() + sName.substring(1),
                  task.getResult().getUser().getUid());
         FirebassDatabaseHelper.setCurrentUser(user);
         mDatabase.child("users")

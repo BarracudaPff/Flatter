@@ -103,6 +103,7 @@
             android:layout_marginEnd="16dp"
             android:gravity="end"
             android:text="Time here"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
@@ -163,6 +164,7 @@
             android:layout_height="wrap_content"
             android:text="Время"
             android:textAppearance="@style/TextAppearance.AppCompat"
+            android:visibility="gone"
             app:layout_constraintBaseline_toBaselineOf="@+id/party_time"
             app:layout_constraintStart_toStartOf="@+id/party_about" />
 

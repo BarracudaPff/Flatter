@@ -43,7 +43,7 @@ public class ProfilePhotosAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View itemView = layoutInflater.inflate(R.layout.item_profle_photo, container, false);
         ImageView imageView = itemView.findViewById(R.id.viewPagerItem_image1);
-        View darker = itemView.findViewById(R.id.darker);
+        View darker = itemView.findViewById(R.id.party_darker);
 
         FirebaseStorage.getInstance().getReference()
                 .child("images")

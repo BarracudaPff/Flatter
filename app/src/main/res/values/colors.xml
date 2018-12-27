@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimary">#fe0154</color>
     <color name="colorPrimaryDark">#cb0143</color>
+    <color name="colorPrimaryAlpha">#86fe0154</color>
     <color name="colorAccent">#ffffff</color>
 
     <color name="login">#0072c6</color>
@@ -11,6 +12,7 @@
 
     <color name="selector_item_color">#000</color>
     <color name="white">#fff</color>
+    <color name="whiteAlpha">#c8ffffff</color>
     <color name="fragment_background">#eee</color>
 
     <color name="free">#2196F3</color>

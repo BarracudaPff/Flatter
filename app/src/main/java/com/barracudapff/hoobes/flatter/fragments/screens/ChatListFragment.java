@@ -5,10 +5,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -70,7 +70,7 @@ public class ChatListFragment extends Fragment {
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_chat_list, container, false);
-        getActivity().setTitle("Сообщения");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Сообщения");
 
         mDatabase = FirebaseDatabase
                 .getInstance()
@@ -154,39 +154,6 @@ public class ChatListFragment extends Fragment {
             adapter.stopListening();
         }
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-
-
-        /*// Set up Layout Manager, reverse layout
-        mManager = new LinearLayoutManager(getActivity());
-        mManager.setReverseLayout(true);
-        mManager.setStackFromEnd(true);
-        mRecyclerView.setLayoutManager(mManager);// Set up FirebaseRecyclerAdapter with the Query
-        Query postsQuery = getQuery(mDatabase);
-
-        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<LastMessage>()
-                .setQuery(postsQuery, LastMessage.class)
-                .build();
-
-        mAdapter = new FirebaseRecyclerAdapter<LastMessage, MessageHolder>(options) {
-            @NonNull
-            @Override
-            public MessageHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-                LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-                return new MessageHolder(inflater.inflate(R.layout.item_message, viewGroup, false), i);
-            }
-
-            @Override
-            protected void onBindViewHolder(@NonNull MessageHolder holder, int position, @NonNull LastMessage model) {
-
-            }
-        };*/
-    }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
         app:layout_constraintEnd_toStartOf="@+id/chat_list_date"
         app:layout_constraintStart_toEndOf="@+id/chat_list_profile_image"
         app:layout_constraintTop_toTopOf="@+id/chat_list_profile_image" />
@@ -33,7 +34,9 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="2"
         app:layout_constraintBottom_toBottomOf="@+id/chat_list_profile_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/chat_list_profile_image"
@@ -43,7 +46,10 @@
         android:id="@+id/chat_list_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#977f8f"
+        app:layout_constraintBottom_toBottomOf="@+id/chat_list_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/chat_list_profile_image" />
 </android.support.constraint.ConstraintLayout>

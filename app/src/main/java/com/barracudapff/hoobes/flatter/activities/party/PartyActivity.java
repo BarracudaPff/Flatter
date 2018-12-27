@@ -184,10 +184,10 @@ public class PartyActivity extends AppCompatActivity {
         aboutView.setText(party.about);
         dateView.setText(new SimpleDateFormat(
                 "dd MMMM yyyy", getResources().getConfiguration().locale)
-                .format(String.valueOf(party.dateTime)));
+                .format(party.dateTime));
         timeView.setText(new SimpleDateFormat(
                 "dd MMMM yyyy", getResources().getConfiguration().locale)
-                .format(String.valueOf(party.dateTime)));
+                .format(party.dateTime));
         String members;
         if (party.members.size() == 1)
             members = "На вечеринке пока только организатор";

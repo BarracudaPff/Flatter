@@ -16,8 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:title="Начать беседу"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Начать беседу" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -28,60 +28,46 @@
         tools:context=".activities.chat.NewChatActivity"
         tools:showIn="@layout/activity_new_chat">
 
-        <TextView
-            android:id="@+id/heading_lable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:text="Найти участника по имени"
-            android:textColor="#555555"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
             android:id="@+id/search_field"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@android:style/Widget.EditText"
+            android:layout_width="346dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/search_outline"
             android:ems="10"
-            android:hint="Поиск ..."
+            android:hint="Поиск по имени..."
             android:inputType="textPersonName"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="20dp"
             android:paddingBottom="10dp"
             android:textColor="#999999"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/search_button"
-            app:layout_constraintEnd_toStartOf="@+id/search_button"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/search_button" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/search_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/ic_shortcut_search"
             android:clickable="true"
             android:focusable="true"
-            android:background="@drawable/ic_shortcut_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/search_field"
-            app:layout_constraintTop_toBottomOf="@+id/heading_lable" />
+            app:layout_constraintBottom_toBottomOf="@+id/search_field"
+            app:layout_constraintEnd_toEndOf="@+id/search_field"
+            app:layout_constraintTop_toTopOf="@+id/search_field" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/result_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="24dp"
+            android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
