@@ -1,9 +1,10 @@
 package com.barracudapff.hoobes.flatter.fragments.screens;
 
 
-import android.annotation.SuppressLint;
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -25,8 +27,8 @@ import android.widget.Toast;
 
 import com.barracudapff.hoobes.flatter.R;
 import com.barracudapff.hoobes.flatter.activities.party.CreatePartyActivity;
+import com.barracudapff.hoobes.flatter.activities.party.PartyActivity;
 import com.barracudapff.hoobes.flatter.database.models.Party;
-import com.barracudapff.hoobes.flatter.database.models.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -42,14 +44,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -59,6 +57,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerClickListener {
     public static final int LOCATION_UPDATE_MIN_DISTANCE = 10;
     public static final int LOCATION_UPDATE_MIN_TIME = 5000;
+    public static final int LOCATION_REQUEST = 999;
 
     protected MapView mapView;
     protected GoogleMap mMap;
@@ -152,7 +151,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         return view;
     }
 
-    @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -162,7 +160,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
         mMap.getUiSettings().setMapToolbarEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
-        mMap.setMyLocationEnabled(true);
 
         getCurrentLocation();
 
@@ -171,16 +168,22 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         mMap.setOnMarkerClickListener(this);
     }
 
-    @SuppressLint("MissingPermission")
     private void getCurrentLocation() {
         boolean isGPSEnabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         boolean isNetworkEnabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions();
+            return;
+        } else if (mMap != null)
+            mMap.setMyLocationEnabled(true);
 
         Location location = null;
         if (!(isGPSEnabled || isNetworkEnabled))
             Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
         else {
             if (isNetworkEnabled) {
+
                 mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
                         LOCATION_UPDATE_MIN_TIME, LOCATION_UPDATE_MIN_DISTANCE, mLocationListener);
                 location = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -194,6 +197,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         }
         if (location != null) {
             moveCamera(location);
+        }
+    }
+
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions(getActivity()
+                , new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                LOCATION_REQUEST);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode
+            , @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == LOCATION_REQUEST) {
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getCurrentLocation();
+            } else {
+                requestPermissions();
+            }
         }
     }
 
@@ -264,7 +285,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
     @Override
     public void onMapLongClick(LatLng latLng) {
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext(), R.style.AlertDialogCustom);
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
         mBuilder.setCancelable(true)
                 .setTitle("Создать новою вечеринку")
                 .setNegativeButton(R.string.cancel,
@@ -282,7 +303,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                         Intent intent = new Intent(getActivity(), CreatePartyActivity.class);
                         intent.putExtra("POSITION_LAT", touchPosition.latitude);
                         intent.putExtra("POSITION_LON", touchPosition.longitude);
-                        startActivityForResult(intent, 105);
+                        getActivity().startActivityForResult(intent, 105);
                     });
 
         mBuilder.create().show();
@@ -307,9 +328,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     }
 
     public void addMarker(Party party) {
+        sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         parties.add(party);
         System.out.println(party);
         mMap.addMarker(toMarkerOptions(party));
+    }
+
+    public void removeMarker(Party party) {
+
+        parties.remove(party);
+        mMap.clear();
+        for (Party party1 : parties) {
+            mMap.addMarker(toMarkerOptions(party1));
+        }
     }
 
     class BottomViewHolder {
@@ -383,7 +414,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
             else
                 loadImage(party.uid, Party.PROFILE_IMAGE, profile);
             contentLayout.setOnClickListener(v -> {
-                Toast.makeText(context, "Open party", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), PartyActivity.class);
+                Party.putInIntent(intent, party);
+                getActivity().startActivityForResult(intent, 106);
             });
         }
 

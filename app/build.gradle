@@ -62,8 +62,8 @@ dependencies {
 
     //Round ImageView
     implementation 'de.hdodenhof:circleimageview:2.2.0'
-    implementation 'me.relex:circleindicator:1.2.2@aar'
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    /** https://github.com/vinc3m1/RoundedImageView*/
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 
     //Tests
     testImplementation 'junit:junit:4.12'

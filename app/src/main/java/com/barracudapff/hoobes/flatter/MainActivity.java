@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("ACTIVITY RESULT " + requestCode + " " + resultCode);
         //Auth
         if (requestCode == 102) {
             if (resultCode == RESULT_OK) {
@@ -174,6 +175,12 @@ public class MainActivity extends AppCompatActivity
         if (requestCode == 105) {
             if (resultCode == RESULT_OK) {
                 mapFragment.addMarker(Party.getFromIntent(data));
+            }
+        }
+        //Open party
+        if (requestCode == 106) {
+            if (resultCode == RESULT_OK) {
+                mapFragment.removeMarker(Party.getFromIntent(data));
             }
         }
     }

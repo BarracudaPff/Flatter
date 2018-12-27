@@ -1,13 +1,12 @@
 package com.barracudapff.hoobes.flatter.database.models;
 
 import android.content.Intent;
-import android.provider.Contacts;
 
-import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 @IgnoreExtraProperties
 public class Party implements Serializable {
@@ -18,11 +17,14 @@ public class Party implements Serializable {
     public static final String ADDRESS = "address";
     public static final String AUTHOR = "author";
     public static final String AUTHOR_UID = "author_uid";
+    public static final String MEMBERS = "members";
     public static final String LIKES = "likes";
     public static final String PROFILE_IMAGE = "profile_image";
     public static final String IS_FREE = "isFree";
     public static final String ABOUT = "about";
     public static final String UID = "uid";
+    public static final String MEMBER = "member";
+    public static final String LIKE = "like";
     //mMap data
     public double latitude;
     public double longitude;
@@ -61,6 +63,7 @@ public class Party implements Serializable {
     }
 
     public static Party getFromIntent(Intent data) {
+
         return new Party(
                 data.getDoubleExtra(LATITUDE, 0)
                 , data.getDoubleExtra(LONGITUDE, 0)
@@ -70,7 +73,7 @@ public class Party implements Serializable {
                 , data.getStringExtra(AUTHOR)
                 , data.getStringExtra(AUTHOR_UID)
                 , data.getBooleanExtra(PROFILE_IMAGE, false)
-                , null
+                , data.getStringArrayListExtra(MEMBERS)
                 , data.getBooleanExtra(IS_FREE, false)
                 , data.getStringExtra(ABOUT)
                 , data.getStringExtra(UID)
@@ -87,9 +90,11 @@ public class Party implements Serializable {
                 .putExtra(AUTHOR, party.author)
                 .putExtra(AUTHOR_UID, party.author_uid)
                 .putExtra(PROFILE_IMAGE, party.profile_image)
+                .putExtra(MEMBERS, party.members)
                 .putExtra(IS_FREE, party.isFree)
                 .putExtra(ABOUT, party.about)
                 .putExtra(UID, party.uid);
+
         return intent;
     }
 
@@ -109,5 +114,18 @@ public class Party implements Serializable {
                 ", isFree=" + isFree +
                 ", about='" + about + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Party)) return false;
+        Party party = (Party) o;
+        return Objects.equals(uid, party.uid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uid);
     }
 }

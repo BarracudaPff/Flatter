@@ -66,4 +66,18 @@
     <string name="add">Добавить</string>
     <string name="too_early">Некорректная дата</string>
     <string name="title_activity_party">PartyActivity</string>
+    <string name="text_text">Big about text here Big about text
+        Big about text here Big about text
+        Big about text here Big about text
+        Big about text here Big about text
+        Big about text here Big about text
+        Big about text here Big about text
+        Big about text here Big about text
+        Big about text here Big about text
+        Big about text here Big about text
+        Big about text here Big about text
+        Big about text here Big about text
+        Big about text here Big about text
+        here Big about text here Big about text here </string>
+    <string name="delete">Удалить</string>
 </resources>
