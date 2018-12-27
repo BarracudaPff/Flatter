@@ -9,6 +9,7 @@ import com.barracudapff.hoobes.flatter.fragments.settings.SettingsAgeFragment;
 import com.barracudapff.hoobes.flatter.fragments.settings.SettingsListFragment;
 import com.barracudapff.hoobes.flatter.fragments.settings.SettingsNamesFragment;
 import com.barracudapff.hoobes.flatter.fragments.settings.SettingsPasswordFragment;
+import com.barracudapff.hoobes.flatter.fragments.settings.SettingsPhotosFragment;
 
 public class SettingsPagerAdapter extends FragmentStatePagerAdapter {
     private SettingsListFragment settingsListFragment;
@@ -16,6 +17,7 @@ public class SettingsPagerAdapter extends FragmentStatePagerAdapter {
     private SettingsNamesFragment settingsNamesFragment;
     private SettingsPasswordFragment settingsPasswordFragment;
     private SettingsAboutFragment settingsAboutFragment;
+    private SettingsPhotosFragment settingsPhotosFragment;
 
     public SettingsPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -24,6 +26,7 @@ public class SettingsPagerAdapter extends FragmentStatePagerAdapter {
         settingsPasswordFragment = SettingsPasswordFragment.newInstance();
         settingsAgeFragment = SettingsAgeFragment.newInstance();
         settingsAboutFragment = SettingsAboutFragment.newInstance();
+        settingsPhotosFragment = SettingsPhotosFragment.newInstance();
     }
 
     @Override
@@ -39,6 +42,8 @@ public class SettingsPagerAdapter extends FragmentStatePagerAdapter {
                 return settingsAgeFragment;
             case 4:
                 return settingsAboutFragment;
+            case 5:
+                return settingsPhotosFragment;
             default:
                 throw new IllegalArgumentException();
         }
@@ -46,6 +51,6 @@ public class SettingsPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 5;
+        return 6;
     }
 }

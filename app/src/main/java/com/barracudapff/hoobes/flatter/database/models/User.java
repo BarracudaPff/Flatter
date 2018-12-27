@@ -18,11 +18,11 @@ public class User {
     public static final String LIKES = "likes";
     public static final String UID = "uid";
     public static final String PROFILE_PHOTOS = "profile_photo_url";
+    public static final String PROFILE_IMAGE_0 = "profile_image_0";
     public static final String PROFILE_IMAGE_1 = "profile_image_1";
     public static final String PROFILE_IMAGE_2 = "profile_image_2";
     public static final String PROFILE_IMAGE_3 = "profile_image_3";
     public static final String PROFILE_IMAGE_4 = "profile_image_4";
-    public static final String PROFILE_IMAGE_5 = "profile_image_5";
     public static final String AGES = "ages";
     public static final String ABOUT = "about";
     //Must have data
@@ -50,11 +50,11 @@ public class User {
     public static User getCurrent(Context context) {
         SharedPreferences sp = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         HashMap<String, String> profile_photo_url = new HashMap<>();
+        profile_photo_url.put(PROFILE_IMAGE_0, sp.getString(PROFILE_IMAGE_0, null));
         profile_photo_url.put(PROFILE_IMAGE_1, sp.getString(PROFILE_IMAGE_1, null));
-        profile_photo_url.put(PROFILE_IMAGE_2, sp.getString(PROFILE_IMAGE_1, null));
-        profile_photo_url.put(PROFILE_IMAGE_3, sp.getString(PROFILE_IMAGE_1, null));
-        profile_photo_url.put(PROFILE_IMAGE_4, sp.getString(PROFILE_IMAGE_1, null));
-        profile_photo_url.put(PROFILE_IMAGE_5, sp.getString(PROFILE_IMAGE_1, null));
+        profile_photo_url.put(PROFILE_IMAGE_2, sp.getString(PROFILE_IMAGE_2, null));
+        profile_photo_url.put(PROFILE_IMAGE_3, sp.getString(PROFILE_IMAGE_3, null));
+        profile_photo_url.put(PROFILE_IMAGE_4, sp.getString(PROFILE_IMAGE_4, null));
 
         return new User(
                 sp.getString(EMAIL, null),
@@ -77,11 +77,11 @@ public class User {
                 .putInt(PARTIES, user.parties)
                 .putInt(LIKES, user.likes)
                 .putString(UID, user.uid)
+                .putString(PROFILE_IMAGE_0, user.profile_photo_url.get(PROFILE_IMAGE_0))
                 .putString(PROFILE_IMAGE_1, user.profile_photo_url.get(PROFILE_IMAGE_1))
                 .putString(PROFILE_IMAGE_2, user.profile_photo_url.get(PROFILE_IMAGE_2))
                 .putString(PROFILE_IMAGE_3, user.profile_photo_url.get(PROFILE_IMAGE_3))
                 .putString(PROFILE_IMAGE_4, user.profile_photo_url.get(PROFILE_IMAGE_4))
-                .putString(PROFILE_IMAGE_5, user.profile_photo_url.get(PROFILE_IMAGE_5))
                 .putInt(AGES, user.ages)
                 .putString(ABOUT, user.about).apply();
 

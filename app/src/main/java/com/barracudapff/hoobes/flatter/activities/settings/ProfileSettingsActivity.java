@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 
 import com.barracudapff.hoobes.flatter.R;
 import com.barracudapff.hoobes.flatter.adapters.SettingsPagerAdapter;
@@ -46,7 +44,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 
     public void changePage(int pos) {
         pager.setCurrentItem(pos, false);
-        ((SettingsBaseFragment) adapter.getItem(pos)).update();
+            ((SettingsBaseFragment) adapter.getItem(pos)).update();
     }
 
     public Toolbar getBar() {

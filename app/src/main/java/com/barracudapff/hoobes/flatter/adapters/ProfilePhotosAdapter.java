@@ -48,21 +48,20 @@ public class ProfilePhotosAdapter extends PagerAdapter {
         FirebaseStorage.getInstance().getReference()
                 .child("images")
                 .child("users")
-                .child(user.uid)
+                .child(user.uid)//user.uid
                 .child(User.PROFILE_PHOTOS)
-                .child((position + 1) + ".jpg")
+                .child(String.valueOf((position)))
                 .getDownloadUrl()
                 .addOnCompleteListener(task -> {
                     Picasso.get().load(task.getResult())
                             //.placeholder(R.color.lightGray)
                             .error(R.color.lightGray)
-                            .into(imageView, new Callback.EmptyCallback(){
+                            .into(imageView, new Callback.EmptyCallback() {
                                 @Override
                                 public void onSuccess() {
                                     darker.setVisibility(View.VISIBLE);
                                 }
-                            })
-                    ;
+                            });
 
                     container.addView(itemView);
                 });

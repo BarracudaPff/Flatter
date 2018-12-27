@@ -65,6 +65,9 @@ dependencies {
     /** https://github.com/vinc3m1/RoundedImageView*/
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
+    //Drag & drop
+    implementation 'com.thesurix.gesturerecycler:gesture-recycler:1.7.0'
+
     //Tests
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

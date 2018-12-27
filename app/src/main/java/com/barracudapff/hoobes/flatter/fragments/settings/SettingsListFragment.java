@@ -4,25 +4,17 @@ package com.barracudapff.hoobes.flatter.fragments.settings;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.barracudapff.hoobes.flatter.MainActivity;
 import com.barracudapff.hoobes.flatter.R;
 import com.barracudapff.hoobes.flatter.activities.settings.ProfileSettingsActivity;
-import com.barracudapff.hoobes.flatter.adapters.SettingsAdapter;
 
 public class SettingsListFragment extends SettingsBaseFragment {
     RecyclerView recyclerView;
@@ -78,12 +70,16 @@ public class SettingsListFragment extends SettingsBaseFragment {
                         viewHolderGroup.onBind("О себе"
                                 , v -> ((ProfileSettingsActivity) getActivity()).changePage(4));
                         break;
+                    case 4:
+                        viewHolderGroup.onBind("Фотографии"
+                                , v -> ((ProfileSettingsActivity) getActivity()).changePage(5));
+                        break;
                 }
             }
 
             @Override
             public int getItemCount() {
-                return 4;
+                return 5;
             }
         });
         return view;
