@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Settings, should always be in the overflow -->
+    <item
+        android:id="@+id/action_last_party"
+        android:title="@string/last_party"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_add_chat"
+        android:title="@string/add_chat"
+        android:icon="@drawable/ic_create_24dp" />
+</menu>

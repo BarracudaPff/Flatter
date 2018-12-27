@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.barracudapff.hoobes.flatter.R;
 import com.barracudapff.hoobes.flatter.database.models.Party;
@@ -222,6 +223,10 @@ public class PartyActivity extends AppCompatActivity {
                                 .error(R.color.lightGray)
                                 .into(previewView);
                     });
+
+        photosView.setOnClickListener(v -> {
+            Toast.makeText(this, "TODO: ", Toast.LENGTH_SHORT).show();
+        });
     }
 
     /**

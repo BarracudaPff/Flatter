@@ -80,4 +80,8 @@
         Big about text here Big about text
         here Big about text here Big about text here </string>
     <string name="delete">Удалить</string>
+    <string name="last_party">Последняя вечеринка</string>
+    <string name="add_chat">Новое сообщение</string>
+    <string name="title_activity_new_chat">NewChatActivity</string>
+    <string name="title_activity_chat">ChatActivity</string>
 </resources>

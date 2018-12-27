@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.chat.NewChatActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title="Начать беседу"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".activities.chat.NewChatActivity"
+        tools:showIn="@layout/activity_new_chat">
+
+        <TextView
+            android:id="@+id/heading_lable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:text="Найти участника по имени"
+            android:textColor="#555555"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/search_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/search_outline"
+            android:ems="10"
+            android:hint="Поиск ..."
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:textColor="#999999"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/search_button"
+            app:layout_constraintEnd_toStartOf="@+id/search_button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_button" />
+
+        <ImageButton
+            android:id="@+id/search_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/ic_shortcut_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/search_field"
+            app:layout_constraintTop_toBottomOf="@+id/heading_lable" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/result_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_button" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.design.widget.CoordinatorLayout>

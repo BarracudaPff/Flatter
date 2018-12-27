@@ -89,6 +89,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.barracudapff.hoobes.flatter.MainActivity" />
         </activity>
+        <activity
+            android:name=".activities.chat.NewChatActivity"
+            android:label="@string/title_activity_new_chat"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.barracudapff.hoobes.flatter.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.chat.ChatActivity"
+            android:label="@string/title_activity_chat"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.barracudapff.hoobes.flatter.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
