@@ -229,12 +229,14 @@ public class ChatListFragment extends Fragment {
                     .addOnSuccessListener(uri -> Picasso.get()
                             .load(uri)
                             .fit()
+                            .centerCrop()
                             .error(R.color.lightGray)
                             .transform(TRANSFORMATION)
                             .into(user_image))
                     .addOnFailureListener(command -> Picasso.get()
                             .load(R.color.lightGray)
                             .fit()
+                            .centerCrop()
                             .transform(TRANSFORMATION)
                             .into(user_image));
 

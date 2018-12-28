@@ -49,12 +49,14 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
                 .addOnSuccessListener(uri -> Picasso.get()
                         .load(uri)
                         .fit()
+                        .centerCrop()
                         .error(R.color.lightGray)
                         .transform(TRANSFORMATION)
                         .into(imageView))
                 .addOnFailureListener(command -> Picasso.get()
                         .load(R.color.lightGray)
                         .fit()
+                        .centerCrop()
                         .transform(TRANSFORMATION)
                         .into(imageView));
 

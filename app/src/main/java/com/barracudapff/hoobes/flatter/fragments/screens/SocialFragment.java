@@ -88,7 +88,7 @@ public class SocialFragment extends Fragment {
             public void onError(@NonNull DatabaseError databaseError) {
             }
         });
-
+        isNextRow2 = false;
         mRecyclerView.setAdapter(new RecyclerView.Adapter<RowViewHolder>() {
             @NonNull
             @Override
@@ -202,7 +202,7 @@ public class SocialFragment extends Fragment {
             textView1.setText(user1.first_name);
             if (user2 != null) {
                 setImage(user2, roundedImageView2);
-                textView2.setText(user1.first_name);
+                textView2.setText(user2.first_name);
             }
         }
 
@@ -213,11 +213,11 @@ public class SocialFragment extends Fragment {
             textView1.setText(user1.first_name);
             if (user2 != null) {
                 setImage(user2, roundedImageView2);
-                textView2.setText(user1.first_name);
+                textView2.setText(user2.first_name);
             }
             if (user3 != null) {
                 setImage(user3, roundedImageView3);
-                textView3.setText(user1.first_name);
+                textView3.setText(user3.first_name);
             }
 
         }
@@ -238,6 +238,7 @@ public class SocialFragment extends Fragment {
                     .addOnSuccessListener(uri -> Picasso.get()
                             .load(uri)
                             .fit()
+                            .centerCrop()
                             .transform(TRANSFORMATION)
                             .into(imageView))
                     .addOnFailureListener(command -> {

@@ -223,6 +223,7 @@ public class SettingsPhotosFragment extends SettingsBaseFragment {
                     .addOnCompleteListener(task -> Picasso.get().load(task.getResult())
                             //.placeholder(R.color.lightGray)
                             .error(R.color.lightGray)
+                            .centerCrop()
                             .into(imageView, new Callback.EmptyCallback() {
                                 @Override
                                 public void onSuccess() {
