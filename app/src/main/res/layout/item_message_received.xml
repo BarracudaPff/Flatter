@@ -23,8 +23,9 @@
             android:id="@+id/text_message_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:maxWidth="240dp"
+            android:padding="8dp"
+            android:paddingStart="16dp"
             android:text=""
             android:textColor="#ffffff" />
 
@@ -33,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginEnd="6dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:text=""
             android:textSize="10sp" />

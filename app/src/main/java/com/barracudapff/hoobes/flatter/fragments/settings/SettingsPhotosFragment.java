@@ -139,7 +139,6 @@ public class SettingsPhotosFragment extends SettingsBaseFragment {
         if (requestCode == 106 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri uri = data.getData();
             try {
-                System.out.println("Id is: " + id);
                 imKey = String.valueOf(id);
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
                 showProgressDialog();
@@ -187,9 +186,8 @@ public class SettingsPhotosFragment extends SettingsBaseFragment {
                 Toast.makeText(getActivity(), "Error upload", Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(taskSnapshot -> {
-            System.out.println("Done");
             if (isFull) {
-                System.out.println("#####");
+                hideProgressDialog();
                 FirebaseDatabase.getInstance().getReference()
                         .child("users")
                         .child(key)
@@ -199,7 +197,6 @@ public class SettingsPhotosFragment extends SettingsBaseFragment {
                         .addOnSuccessListener(command -> {
                             user.profile_photo_url.put("profile_image_" + imKey, imKey);
                             recyclerView.getAdapter().notifyDataSetChanged();
-                            hideProgressDialog();
                         });
             }
         });

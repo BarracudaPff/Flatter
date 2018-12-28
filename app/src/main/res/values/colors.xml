@@ -24,4 +24,5 @@
     <color name="middleGray">#ddd</color>
     <color name="free_entry">#4D8EF2</color>
     <color name="red">@android:color/holo_red_light</color>
+    <color name="black">#000</color>
 </resources>

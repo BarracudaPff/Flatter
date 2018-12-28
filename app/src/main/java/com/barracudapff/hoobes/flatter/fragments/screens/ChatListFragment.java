@@ -3,6 +3,7 @@ package com.barracudapff.hoobes.flatter.fragments.screens;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -19,7 +20,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +37,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.makeramen.roundedimageview.RoundedImageView;
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,10 +52,10 @@ import java.util.Objects;
  * A simple {@link Fragment} subclass.
  */
 public class ChatListFragment extends Fragment {
-    private RecyclerView mRecyclerView;
+    public RecyclerView mRecyclerView;
 
     private DatabaseReference mDatabase;
-    private FirebaseRecyclerAdapter<LastMessage, LastMessageViewHolder> adapter;
+    public FirebaseRecyclerAdapter<LastMessage, LastMessageViewHolder> adapter;
 
     public ChatListFragment() {
         // Required empty public constructor
@@ -179,12 +184,18 @@ public class ChatListFragment extends Fragment {
 
     private class LastMessageViewHolder extends RecyclerView.ViewHolder {
 
+        private final Transformation TRANSFORMATION;
         public ConstraintLayout layout;
         View mView;
 
         public LastMessageViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            TRANSFORMATION = new RoundedTransformationBuilder()
+                    .borderColor(Color.BLACK)
+                    .borderWidthDp(1)
+                    .cornerRadiusDp(32)
+                    .oval(false)
+                    .build();
             mView = itemView;
         }
 
@@ -194,8 +205,7 @@ public class ChatListFragment extends Fragment {
             TextView user_name = mView.findViewById(R.id.chat_list_name);
             TextView user_status = mView.findViewById(R.id.chat_list_text);
             TextView user_date = mView.findViewById(R.id.chat_list_date);
-            ImageView user_image = mView.findViewById(R.id.chat_list_profile_image);
-
+            RoundedImageView user_image = mView.findViewById(R.id.chat_list_profile_image);
 
             //Date
             Date date = new java.util.Date(message.last_message_timestamp);
@@ -211,8 +221,27 @@ public class ChatListFragment extends Fragment {
                 System.out.println(key);
                 ChatActivity.setOtherUID(key);
                 Intent i = new Intent(getActivity(), ChatActivity.class);
-                getActivity().startActivityForResult(i, 103);
+                getActivity().startActivityForResult(i, 108);
             });
+
+            FirebaseStorage.getInstance().getReference()
+                    .child("images")
+                    .child("users")
+                    .child(key)
+                    .child(User.PROFILE_PHOTOS)
+                    .child("0_low_25")
+                    .getDownloadUrl()
+                    .addOnSuccessListener(uri -> Picasso.get()
+                            .load(uri)
+                            .fit()
+                            .error(R.color.lightGray)
+                            .transform(TRANSFORMATION)
+                            .into(user_image))
+                    .addOnFailureListener(command -> Picasso.get()
+                            .load(R.color.lightGray)
+                            .fit()
+                            .transform(TRANSFORMATION)
+                            .into(user_image));
 
         }
     }

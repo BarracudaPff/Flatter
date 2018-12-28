@@ -15,7 +15,6 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class NewSearchFirebaseRecyclerAdapter extends FirebaseRecyclerAdapter<User, UserViewHolder> {
-
     private Activity activity;
 
     private final String myEmail;

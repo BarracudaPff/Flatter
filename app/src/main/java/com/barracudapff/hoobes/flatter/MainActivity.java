@@ -186,7 +186,11 @@ public class MainActivity extends AppCompatActivity
         //New chat
         if (requestCode == 107) {
             if (resultCode == RESULT_OK) {
-                mapFragment.removeMarker(Party.getFromIntent(data));
+            }
+        }
+        //Chat
+        if (requestCode == 108) {
+            if (resultCode == RESULT_OK) {
             }
         }
     }
