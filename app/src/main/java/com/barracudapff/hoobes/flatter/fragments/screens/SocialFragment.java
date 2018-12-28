@@ -86,11 +86,6 @@ public class SocialFragment extends Fragment {
 
             @Override
             public void onError(@NonNull DatabaseError databaseError) {
-                System.out.println(array);
-                System.out.println("3ARRAY");
-                for (User user : array) {
-                    System.out.println(user);
-                }
             }
         });
 
@@ -112,7 +107,6 @@ public class SocialFragment extends Fragment {
 
             @Override
             public void onBindViewHolder(@NonNull RowViewHolder holder, int position) {
-                System.out.println("TYpe " + holder.type);
                 if (holder.type == ROW_2) {
                     try {
                         holder.bindOnView2(

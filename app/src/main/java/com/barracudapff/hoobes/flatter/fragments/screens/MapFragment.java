@@ -311,7 +311,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        System.out.println(marker.getTitle());
         for (Party party : parties) {
             if (party.name.equals(marker.getTitle())) {
                 if (sheetBehavior.getState() == BottomSheetBehavior.STATE_COLLAPSED
@@ -330,7 +329,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     public void addMarker(Party party) {
         sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         parties.add(party);
-        System.out.println(party);
         mMap.addMarker(toMarkerOptions(party));
     }
 

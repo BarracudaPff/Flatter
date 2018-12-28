@@ -86,7 +86,6 @@ public class ChatActivity extends AppCompatActivity {
 
         int compare = userUID.compareTo(otherUID);
         if (compare < 0) {
-            System.out.println("<0!");
             messagesHistory = FirebaseDatabase
                     .getInstance()
                     .getReference()
@@ -94,7 +93,6 @@ public class ChatActivity extends AppCompatActivity {
                     .child("messages")
                     .child(userUID + ":" + otherUID);
         } else {
-            System.out.println(">0!");
             messagesHistory = FirebaseDatabase
                     .getInstance()
                     .getReference()
@@ -105,8 +103,6 @@ public class ChatActivity extends AppCompatActivity {
 
         sendButton.setOnClickListener(v -> {
             String messageText = messageArea.getText().toString();
-
-            System.out.println(messagesHistory.getParent().getKey());
 
             if (!messageText.equals("")) {
                 Message message = new Message(userUID, otherUID, messageText);

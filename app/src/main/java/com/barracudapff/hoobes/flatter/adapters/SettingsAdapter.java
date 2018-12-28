@@ -145,10 +145,8 @@ public class SettingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         void onBind(String settingsText, String setting) {
             text.setText(settingsText);
-            System.out.println(mSettings.getBoolean(setting, false));
             check.setChecked(mSettings.getBoolean(setting, false));
             check.setOnClickListener(v -> {
-                System.out.println("NOTIF: " + check.isChecked());
                 mSettings.edit().putBoolean(setting, check.isChecked()).apply();
             });
         }

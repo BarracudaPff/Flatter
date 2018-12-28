@@ -103,7 +103,6 @@ public class ChatListFragment extends Fragment {
             protected void onBindViewHolder(@NonNull LastMessageViewHolder holder, int position, @NonNull LastMessage model) {
                 final User[] userTo = new User[1];
 
-                System.out.println(getRef(position).getKey());
                 DatabaseReference reference = FirebaseDatabase
                         .getInstance()
                         .getReference()
@@ -113,7 +112,6 @@ public class ChatListFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         userTo[0] = dataSnapshot.getValue(User.class);
-                        System.out.println(userTo[0]);
                         holder.bindOnUser(model, userTo[0], reference.getKey());
                     }
 
@@ -173,7 +171,6 @@ public class ChatListFragment extends Fragment {
                 Toast.makeText(getContext(), "TODO: Last party chat", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_add_chat:
-                System.out.println("New Chat");
                 Intent i = new Intent(getActivity(), NewChatActivity.class);
                 getActivity().startActivityForResult(i, 107);
                 return true;
@@ -217,7 +214,6 @@ public class ChatListFragment extends Fragment {
 
             layout.setOnClickListener(view -> {
                 ChatActivity.setUser(user);
-                System.out.println(key);
                 ChatActivity.setOtherUID(key);
                 Intent i = new Intent(getActivity(), ChatActivity.class);
                 getActivity().startActivityForResult(i, 108);

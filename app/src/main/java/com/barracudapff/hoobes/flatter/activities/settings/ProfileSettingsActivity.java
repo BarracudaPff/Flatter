@@ -31,7 +31,6 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                System.out.println("onPageSelected");
                 try {
                     current = position;
                 } catch (Exception e) {
@@ -53,7 +52,6 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        System.out.println("Back");
         if (current == 0)
             super.onBackPressed();
         else

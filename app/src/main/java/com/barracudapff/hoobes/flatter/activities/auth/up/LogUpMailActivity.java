@@ -4,13 +4,10 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
@@ -135,7 +132,6 @@ public class LogUpMailActivity extends LoginBaseActivity {
                     hideProgressDialog();
 
                     if (task.isSuccessful()) {
-                        System.out.println(task.getResult().getAdditionalUserInfo().getProviderId());
                         writeNewUser(task, mEmailField, mFirstName, mSecondName);
                         setResult(Activity.RESULT_OK);
                         finish();

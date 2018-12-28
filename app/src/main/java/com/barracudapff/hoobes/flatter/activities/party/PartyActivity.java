@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.barracudapff.hoobes.flatter.R;
 import com.barracudapff.hoobes.flatter.database.models.Party;
 import com.barracudapff.hoobes.flatter.database.models.User;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
@@ -48,7 +49,6 @@ public class PartyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         party = Party.getFromIntent(getIntent());
-        System.out.println(party);
         user = User.getCurrent(this);
 
         setContentView(R.layout.activity_party);
@@ -57,7 +57,6 @@ public class PartyActivity extends AppCompatActivity {
         bindOnView(party);
 
         joinView.setOnClickListener(v -> {
-            System.out.println(fl);
             if (fl == -2) {
                 showDeleteWarning();
                 return;
@@ -70,8 +69,6 @@ public class PartyActivity extends AppCompatActivity {
                         Snackbar snackbar1 = Snackbar.make(findViewById(R.id.party_layout), requestUndo, Snackbar.LENGTH_SHORT);
                         snackbar1.show();
                     }).setActionTextColor(getResources().getColor(R.color.red)).show();
-            System.out.println(request);
-            System.out.println(requestUndo);
         });
     }
 
@@ -197,7 +194,9 @@ public class PartyActivity extends AppCompatActivity {
         authorView.setText(party.author);
         placeView.setText(party.address);
 
-        if (party.author_uid.equals(user.uid)) {
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            setRequest(2);
+        } else if (party.author_uid.equals(user.uid)) {
             setRequest(-2);
         } else if (party.members.contains(user.uid)) {
             setRequest(-1);
@@ -230,11 +229,11 @@ public class PartyActivity extends AppCompatActivity {
     }
 
     /**
-     * @param fl -2 is delete, -1 is exit, 0 is join, 1 is request for join
+     * @param fl -2 is delete, -1 is exit, 0 is join, 1 is request for join, 2 is none
      */
     private void setRequest(int fl) {
-        if (fl < -2 || fl > 1)
-            throw new IllegalArgumentException("fl must be -2, -1, 0, or 1");
+        if (fl < -2 || fl > 2)
+            throw new IllegalArgumentException("fl must be -2, -1, 0, 1 or 2");
         switch (fl) {
             case -2:
                 this.fl = -2;
@@ -260,7 +259,10 @@ public class PartyActivity extends AppCompatActivity {
                 requestUndo = "Запрос отменен";
                 joinView.setText("Запросить");
                 break;
-
+            case 2:
+                this.fl = 1;
+                joinView.setVisibility(View.GONE);
+                break;
         }
     }
 

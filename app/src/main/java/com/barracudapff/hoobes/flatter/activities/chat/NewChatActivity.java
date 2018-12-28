@@ -82,7 +82,6 @@ public class NewChatActivity extends AppCompatActivity {
     }
 
     private void firebaseUserSearch(String searchText) {
-        System.out.println("Search");
         Query postsQuery = mUserDatabase.child("users").orderByChild("email").startAt(searchText).endAt(searchText + "\uf8ff");
 
         FirebaseRecyclerOptions<User> options = new FirebaseRecyclerOptions.Builder<User>()
@@ -97,7 +96,6 @@ public class NewChatActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println(requestCode);
         if (resultCode == Activity.RESULT_OK) {
             setResult(Activity.RESULT_OK);
             finish();

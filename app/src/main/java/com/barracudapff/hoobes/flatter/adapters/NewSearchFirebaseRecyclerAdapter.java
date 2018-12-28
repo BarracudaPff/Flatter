@@ -39,7 +39,6 @@ public class NewSearchFirebaseRecyclerAdapter extends FirebaseRecyclerAdapter<Us
         holder.layout.setOnClickListener(view -> {
             ChatActivity.setUser(model);
             String s = getRef(position).getKey();
-            System.out.println(s);
             ChatActivity.setOtherUID(s);
             Intent i = new Intent(activity, ChatActivity.class);
             activity.startActivityForResult(i, 103);

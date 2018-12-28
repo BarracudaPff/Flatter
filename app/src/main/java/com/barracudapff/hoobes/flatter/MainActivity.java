@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity
                 return true;
             case R.id.navigation_chat_list:
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                    System.out.println("chatListFragment");
                     switchToFragment(chatListFragment);
                 } else {
                     switchToFragment(SignInFragment.newInstance());
@@ -124,7 +123,6 @@ public class MainActivity extends AppCompatActivity
                 return true;
             case R.id.navigation_person:
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                    System.out.println("personFragment");
                     switchToFragment(personFragment);
                 } else {
                     switchToFragment(SignInFragment.newInstance());

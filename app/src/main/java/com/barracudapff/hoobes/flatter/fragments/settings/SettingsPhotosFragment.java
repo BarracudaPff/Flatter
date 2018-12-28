@@ -55,7 +55,6 @@ public class SettingsPhotosFragment extends SettingsBaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         user = User.getCurrent(getContext());
-        System.out.println(user);
         View view = inflater.inflate(R.layout.fragment_settings_photos, container, false);
         recyclerView = view.findViewById(R.id.profile_images_list);
         recyclerView.setHasFixedSize(true);
@@ -240,7 +239,6 @@ public class SettingsPhotosFragment extends SettingsBaseFragment {
         }
 
         public void bindOnView(String uid, int i, View.OnClickListener listener) {
-            System.out.println("HEY");
             imageView.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_photo_library_24dp));
             int paddingDp = 300;
             imageView.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);

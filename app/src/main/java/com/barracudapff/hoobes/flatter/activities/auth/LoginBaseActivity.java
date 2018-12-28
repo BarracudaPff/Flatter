@@ -56,7 +56,6 @@ public abstract class LoginBaseActivity extends AppCompatActivity implements Vie
     }
 
     private boolean setTextRequired(TextView view, boolean result) {
-        System.out.println("Result is: " + view.getId());
         if (TextUtils.isEmpty(view.getText().toString())) {
             try {
                 view.setError(getString(R.string.required));

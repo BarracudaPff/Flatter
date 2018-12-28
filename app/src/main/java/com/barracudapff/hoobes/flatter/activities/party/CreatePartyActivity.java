@@ -268,8 +268,6 @@ public class CreatePartyActivity extends AppCompatActivity implements OnMapReady
                     e.printStackTrace();
                     Toast.makeText(this, "Ошибка при создании вечеринки", Toast.LENGTH_SHORT).show();
                 });
-
-        System.out.println(party);
     }
 
     private boolean validates(TextView... views) {

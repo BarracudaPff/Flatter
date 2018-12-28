@@ -117,7 +117,6 @@ public class AuthSignUpFragment extends AuthSignBaseFragment implements GoogleAp
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        System.out.println("C A N C E L");
     }
 
     public interface OnAuthSignUpFragmentInteractionListener {

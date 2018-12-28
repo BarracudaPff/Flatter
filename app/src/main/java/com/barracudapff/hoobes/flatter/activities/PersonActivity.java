@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.barracudapff.hoobes.flatter.R;
 import com.barracudapff.hoobes.flatter.adapters.ProfilePhotosAdapter;
 import com.barracudapff.hoobes.flatter.database.models.User;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -48,13 +47,11 @@ public class PersonActivity extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().getReference()
                 .child("users")
-                .child(FirebaseAuth.getInstance().getUid())
+                .child(user.uid)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         user = dataSnapshot.getValue(User.class);
-                        System.out.println(user);
-                        System.out.println("!!!!");
                         User.saveCurrent(getBaseContext(), user);
                         adapter.setUser(user);
                         updateUI(user);

@@ -33,7 +33,6 @@ public class StepAnimation {
     }
 
     public void start() {
-        System.out.println(views.size());
         for (View view : views) {
             view.animate();
         }
