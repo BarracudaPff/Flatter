@@ -183,7 +183,6 @@ public class ChatListFragment extends Fragment {
     }
 
     private class LastMessageViewHolder extends RecyclerView.ViewHolder {
-
         private final Transformation TRANSFORMATION;
         public ConstraintLayout layout;
         View mView;
@@ -205,7 +204,7 @@ public class ChatListFragment extends Fragment {
             TextView user_name = mView.findViewById(R.id.chat_list_name);
             TextView user_status = mView.findViewById(R.id.chat_list_text);
             TextView user_date = mView.findViewById(R.id.chat_list_date);
-            RoundedImageView user_image = mView.findViewById(R.id.chat_list_profile_image);
+            RoundedImageView user_image = mView.findViewById(R.id.chat_list_profile_image1);
 
             //Date
             Date date = new java.util.Date(message.last_message_timestamp);

@@ -30,7 +30,7 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
     public UserViewHolder(@NonNull View itemView) {
         super(itemView);
         mView = itemView;
-        imageView = mView.findViewById(R.id.chat_list_profile_image);
+        imageView = mView.findViewById(R.id.chat_list_profile_image1);
     }
 
     public void bindOnUser(User user, String key) {

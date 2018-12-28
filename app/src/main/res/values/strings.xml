@@ -84,4 +84,5 @@
     <string name="add_chat">Новое сообщение</string>
     <string name="title_activity_new_chat">NewChatActivity</string>
     <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_person">PersonActivity</string>
 </resources>
