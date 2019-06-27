@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Flatter</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_social">Люди рядом</string>
+    <string name="title_chat">Чат</string>
+    <string name="title_map">Карта</string>
+    <string name="title_party">Вечеринки</string>
+    <string name="title_person">Аккаунт</string>
+    <string name="log_hint">Вы не вошли в систему. Для просмотра профиля войдите в аккаунт или создайте новый.</string>
+    <string name="log_in">Войти в систему</string>
+    <string name="title_activity_log_in">Зайти в пользователя</string>
+</resources>

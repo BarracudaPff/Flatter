@@ -1,0 +1,134 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="button_start_dialog">
+        <item name="colorSecondary">#432</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="person_name">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="person_name_bold" parent="person_name">=
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="person_description">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="loginOld">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="login_title_descr" parent="loginOld">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="login_sign" parent="loginOld">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="login_add_new" parent="login_title_descr">
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
+    <style name="map_time">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#878787</item>
+    </style>
+
+    <style name="map_title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="map_entry">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#4D8EF2</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="map_place">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">#909090</item>
+    </style>
+
+    <style name="map_author">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="screen_party_map_author" parent="map_author">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="map_more">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="message" parent="map_more">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="screen_party_map_more" parent="map_more">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="join" parent="map_more">
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="screen_party_t">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="screen_party">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#909090</item>
+    </style>
+
+    <style name="login_hint">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#dbdbdb</item>
+    </style>
+
+    <style name="sign_up">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#fe0154</item>
+    </style>
+
+    <style name="sign_in_up">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#fe0154</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="message_auth">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>
